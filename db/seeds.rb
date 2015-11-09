@@ -10,14 +10,14 @@ Product.create!([
 	                name: "Folding chair",
                     description: "Easy to store, folding chair",
                     price: 10.99,
-                    quantity: 1
+                    quantity: 1,
                     image_url: "folding-chair.jpg"
                   },
                   {
                     name: "Coffe table 2",
                     description: "Strong and easy to assemble",
                     price: 20.99,
-                    quantity: 1
+                    quantity: 1,
                     image_url: "coffe-table.jpg"
                   },
                   {
