@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -39,6 +40,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 group :test, :development do
+  gem 'sqlite3'	
   gem "test-unit"
   gem "minitest"
   gem "rspec-rails", "2.13.1"
@@ -46,5 +48,9 @@ end
 
 group :test do
   gem "capybara", "2.1.0"
+end
+
+group :production do
+  gem 'pg'
 end
 
