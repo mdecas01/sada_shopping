@@ -1,0 +1,27 @@
+<h1>Products catalogue</h1>
+<% @products.each do |product| %>
+    <article>
+      <header>
+        <h2><%= link_to product.name, product %></h2>
+      </header>
+      <%= place_image(product) %>
+      <table>
+        <tr>
+          <p>
+            Description: <%= truncate(product.description, length: 10) %>
+          </p>
+        </tr>
+        <tr>
+          <p>
+           Price: <%= format_price(product) %>
+          </p>
+        </tr>
+        <tr>
+          <p>
+           Quantity available: <%= product_availability(product) %>
+          </p>
+        </tr>
+      </table>
+    </article>  
+<% end %>
+
