@@ -11,8 +11,8 @@ describe "Adding a new product" do
     fill_in "Name", with: "C sofa"
     fill_in "Description", with: "Many colors to choose from"
     #cannot find price filed???????
-    #fill_in "price", with: "150.99"
-    fill_in "quantity", with: "1"
+    fill_in "Price", with: 150.99
+    fill_in "Quantity", with: 1
 
 
 
@@ -22,4 +22,13 @@ describe "Adding a new product" do
 
     expect(page).to have_text("C sofa")
   end	
+
+  it "does not save the product if it field are invalid" do
+    visit new_product_url
+
+    click_button 'Create Product'
+
+    expect(Product.count).to eq(0)
+    expect(current_path).to eq(products_path)   
+  end  
 end

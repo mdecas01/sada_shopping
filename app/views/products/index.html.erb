@@ -1,6 +1,5 @@
-<h1>Products catalogue</h1>
 <% @products.each do |product| %>
-    <article>
+    <article class="product">
       <header>
         <h2><%= link_to product.name, product %></h2>
       </header>

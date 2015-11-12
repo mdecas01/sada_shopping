@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
 	end	
 
 	def show
-    end	
+  end	
 
     def edit  
     end	
@@ -22,11 +22,14 @@ class ProductsController < ApplicationController
       @product = Product.new
     end	
 
-    def create
-      @product = Product.new(product_attributes)
-      @product.save
+  def create
+    @product = Product.new(product_attributes)
+    if @product.save
       redirect_to @product
+    else
+      render :new  
     end	
+  end
 
     def destroy
       @product = Product.find(params[:id])

@@ -1,0 +1,77 @@
+@import 'color_schem';
+
+a.button {
+  border: 1px $green-color solid;
+  border-radius: 4px;
+}
+
+header#p-header { 
+  padding: 7px; 
+  color: $grey-color; 
+  background: $green-color;
+  border-bottom: 5px solid darken($blue-color, 5%);
+
+  h1 {
+    text-align: center;
+  }
+}
+ 
+footer#p-footer { 
+  padding: 5px; 
+  color: $grey-color; 
+  background: $green-color;
+  border-top: 5px solid darken($blue-color, 5%);
+
+  p {
+    text-align: center;
+  }
+}
+
+aside.p-aside {
+  float: top; 
+  background: $grey-color; 
+  width: 200px;	
+  height: 200px;
+}
+
+#prod_links {
+  margin-bottom: 1cm;	
+}
+
+div.field_with_errors {
+  label {
+    color: $erros-color;
+  }
+
+  input, textarea, select {
+    background: $areas-color;
+  }
+}
+
+fieldset {
+    width: 400px;
+    height: 500px;
+    background: #33CC66;
+    border-radius: 15px;
+}
+
+div.form_wrapper {
+  padding-left: 50px;
+  margin-bottom: 15px;
+}
+
+  ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0 0 20px 0;
+      padding: 0;
+            margin-bottom: 5px;
+
+      &.required label {
+        font-weight: bold;
+      }
+    }
+  }

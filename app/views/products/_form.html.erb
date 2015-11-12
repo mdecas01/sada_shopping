@@ -1,4 +1,6 @@
 <%= form_for(@product) do |f| %>
+<fieldset>
+  <ol>
   <p>
     <%= f.label :name %></br>
     <%= f.text_field :name, autofocus: :true %>
@@ -22,4 +24,6 @@
    <p>
     <%= f.submit %> | <%= link_to 'Cancel', products_path %>
   </p>
-  <% end %>
+  <ol>
+</fieldset>  
+<% end %>

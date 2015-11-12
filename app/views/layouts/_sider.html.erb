@@ -1,5 +1,5 @@
 <div style="float: right">
-	<aside style="float: top; background: #F0F0F0; width: 200px;">
+	<aside class="p-aside">
 	  <nav>
 	    <ul>
 	      <li>
@@ -8,14 +8,14 @@
 	    </ul>
 	  </nav>
 	</aside>
-	<aside style="float: bottomS; background: #F0F0F0; width: 200px;">
+	<aside class="p-aside">
 	  <nav>
 	    <ul>
 	      <li>
-	        <%= link_to "All products", products_path %>
+	        <%= link_to "All products", products_path, class: 'button'%>
 	      </li>
 	      <li>
-	        <%= link_to "Add new product", new_product_path(@product) %>
+	        <%= link_to "Add new product", new_product_path(@product), class: 'button' %>
 	      </li>
 	    </ul>
 	  </nav>

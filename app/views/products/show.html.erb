@@ -13,7 +13,9 @@
     <%= format_price(@product) %>
   </p>
 </article>
-<%= link_to "Edit product", edit_product_path(@product) %> |
-<%= link_to 'Delete product', product_path(@product), method: :delete, data: { confirm: 'Are you sure you want to delete this product?' } %> |
-<%= link_to 'Cancel', products_path %>
+<div id="prod_links">
+  <%= link_to "Edit product", edit_product_path(@product) %> |
+  <%= link_to 'Delete product', product_path(@product), method: :delete, data: { confirm: 'Are you sure you want to delete this product?' } %> |
+  <%= link_to 'Cancel', products_path %>
+</div>
 

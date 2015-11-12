@@ -1,3 +1,13 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'color_schem';
+
+article.product {
+  margin-bottom: 2cm;
+  img {
+    float: left;
+    margin: 0 15px;
+    border: 3px solid $grey-color;
+  }  
+}
