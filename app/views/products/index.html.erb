@@ -12,12 +12,17 @@
         </tr>
         <tr>
           <p>
-           Price: <%= format_price(product) %><%= new_product(product) %>
+           Price: <%= format_price(product) %>
           </p>
         </tr>
         <tr>
           <p>
            Quantity available: <%= product_availability(product) %>
+          </p>
+        </tr>
+        <tr>
+          <p id="new_prod">
+           <%= new_product(product) %>
           </p>
         </tr>
       </table>

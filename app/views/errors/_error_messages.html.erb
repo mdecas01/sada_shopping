@@ -1,0 +1,17 @@
+<% if @product.errors.any? %>
+<section id="error_messages">
+  <header>
+    <h2>
+      Sorry, the <%= @product.class.name.downcase %> could not be saved. 
+    </h2>
+    <h3>
+       Correct the following <%= pluralize(@product.errors.count, "error") %>:
+    </h3>
+  </header>
+  <ul>
+    <% @product.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</section>
+<% end %>

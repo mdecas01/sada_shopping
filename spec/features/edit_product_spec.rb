@@ -19,6 +19,7 @@ describe "Editing a product details" do
       expect(current_path).to eq(product_path(product))
 
       expect(page).to have_text("New folding chair")
+      expect(page).to have_text("Product seccessfully updated!")
    end	
 
    it "does not update the product if any of its fields is invalid" do

@@ -50,9 +50,20 @@ div.field_with_errors {
 
 fieldset {
     width: 400px;
-    height: 500px;
-    background: #33CC66;
+    height: 470px;
+    background: $form_color;
     border-radius: 15px;
+    display: block;
+
+    li {
+      display: block;
+    }
+
+      label {
+    font-size: 1.2em;
+    display: block;
+    margin-bottom: .25em;
+  }
 }
 
 div.form_wrapper {
@@ -75,3 +86,39 @@ div.form_wrapper {
       }
     }
   }
+
+section#error_messages {
+  width: 425px;
+  border-radius: 15px;
+  background: $form_color;
+  h3 {
+    color: red;
+    margin-left: 10px;
+  }
+
+  h2 {
+    margin: 10px 0  0 10px;
+  }
+} 
+
+#new_prod {
+  color: red;
+}
+
+.flash {
+  border-radius: 4px;
+  padding: 20px;
+  margin-left: 400px;
+  width: 300px;
+  height: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  
+  &.notice {
+    background-color: $notice-color;
+  }
+
+  &.alert {
+    background-color: red;
+  }
+}

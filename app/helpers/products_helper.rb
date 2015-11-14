@@ -2,7 +2,7 @@ module ProductsHelper
 	#checks if product was created in less than 1 day
 	def new_product(product)	
     if product.new?
-      "new"
+      "(NEW!!!)"
     end	
 	end	
 

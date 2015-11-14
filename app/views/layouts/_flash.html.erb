@@ -1,0 +1,4 @@
+
+<% flash.each do |k, v| %>
+  <%= content_tag(:p, v, :class => "flash #{k}") %>
+<% end %>

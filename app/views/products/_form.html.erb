@@ -1,29 +1,31 @@
 <%= form_for(@product) do |f| %>
-<fieldset>
-  <ol>
-  <p>
-    <%= f.label :name %></br>
-    <%= f.text_field :name, autofocus: :true %>
-  </p>
-  <p>
-    <%= f.label :description %></br>
-    <%= f.text_area :description, cols: 40, rows: 7 %>
-  </p>	
-   <p>
-    <%= f.label :price %></br>
-    <%= f.number_field :price, :step => 'any' %>
-  </p>	
-  <p>
-    <%= f.label :quantity %></br>
-    <%= f.number_field :quantity %>
-  </p>
-  <p>
-    <%= f.label :image_url %></br>
-    <%= f.text_field :image_url %>
-  </p>
-   <p>
-    <%= f.submit %> | <%= link_to 'Cancel', products_path %>
-  </p>
-  <ol>
-</fieldset>  
+  <%= render "errors/error_messages", object: @product %>
+  <fieldset>
+    <ol>
+      <li>
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true %>
+      </li>
+      <li>
+        <%= f.label :description %>
+        <%= f.text_area :description, cols: 40, rows: 7 %>
+      </li>
+      <li>
+        <%= f.label :price %>
+        <%= f.number_field :price, :step => "any" %>
+      </li>
+      <li>
+        <%= f.label :quantity %>
+        <%= f.number_field :quantity %>
+      </li>
+      <li>
+        <%= f.label :image_url %>
+        <%= f.text_field :image_url %>
+      </li>
+    </ol>
+    <p>
+      <%= f.submit %>
+      <%= link_to "Cancel", products_path, class: 'button' %>
+    </p>
+  </fieldset>
 <% end %>
