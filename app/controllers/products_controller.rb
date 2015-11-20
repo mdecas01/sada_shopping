@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
 	before_action :set_products, except: [:index, :new, :create]
+  before_action :create_cart
 
 	def index
       @products = Product.all
