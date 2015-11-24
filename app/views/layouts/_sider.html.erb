@@ -6,7 +6,7 @@
 	        <%= link_to "View cart", @cart %>
 	      </li>
 	        <% if @cart %>
-	          <p>You have <%= pluralize(@cart.product_items.count, 'product')  %> in your shopping cart</p>
+	          <p>You have <%= pluralize(check_product_quantities(@cart), 'product')  %> in your shopping cart</p>
 	        <% end %>  
 	    </ul>
 	  </nav>
