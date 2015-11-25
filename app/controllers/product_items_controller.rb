@@ -11,5 +11,11 @@ class ProductItemsController < ApplicationController
       else
         render :new  
       end		
-	end	
+	end
+
+  private
+
+  def product_item_params
+    params.require(:line_item).permit(:product_id)
+  end	
 end

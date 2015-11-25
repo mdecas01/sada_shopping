@@ -7,6 +7,14 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
   end	
 
+  def destroy
+    if @cart.id == session[:id]
+      @cart.destroy
+      session[:id] = nil
+      redirect_to products_url, notice: 'Shopping cart is empty!'
+    end  
+  end  
+
   protected
 
   def id_not_found

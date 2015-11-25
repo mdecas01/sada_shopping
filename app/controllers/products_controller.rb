@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
     
     #set attributes that can be assigned
     def product_attributes
-      params.require(:product).permit(:name, :description, :price, :quantity, :image_url)
+      params.require(:product).permit(:id, :name, :description, :price, :quantity, :image_url)
     end
 
 end

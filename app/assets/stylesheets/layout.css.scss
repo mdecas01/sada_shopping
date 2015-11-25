@@ -122,3 +122,13 @@ section#error_messages {
     background-color: red;
   }
 }
+
+.total_value {
+  position: relative;
+  left: 90px;
+
+  #tot {
+    font-weight: bold;
+    border-top: 1px solid #000;
+  }
+}
