@@ -5,12 +5,7 @@ module ProductsHelper
       "(NEW!!!)"
     end	
 	end	
-
-    #adds the £ currency to the price displayed
-	def format_price(product)
-    number_to_currency(product.price, unit: "£")
-  end
-
+  
   def product_availability(product)
     if product.available?
       product.quantity
