@@ -6,7 +6,7 @@ class ProductItemsController < ApplicationController
       product = Product.find(params[:format])
       @product_item = @cart.add_product_item(product)
       if @product_item.save
-        redirect_to @product_item.cart
+        redirect_to product
         flash[:notice] = "Product successfully added!"
       else
         render :new  

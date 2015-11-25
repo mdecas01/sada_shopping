@@ -3,11 +3,7 @@
 	  <nav>
 	    <ul>
 	      <li>
-	        <%= link_to "View cart", @cart %>
-	      </li>
-	        <% if @cart %>
-	          <p>You have <%= pluralize(check_product_quantities(@cart), 'product')  %> in your shopping cart</p>
-	        <% end %>  
+	      <%= render 'carts/show' %> 
 	    </ul>
 	  </nav>
 	</aside>
