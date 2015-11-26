@@ -79,7 +79,7 @@ div.form_wrapper {
     li {
       margin: 0 0 20px 0;
       padding: 0;
-            margin-bottom: 5px;
+      margin-bottom: 5px;
 
       &.required label {
         font-weight: bold;
@@ -127,7 +127,7 @@ section#error_messages {
   position: relative;
   left: 90px;
 
-  #tot {
+  .tot {
     font-weight: bold;
     border-top: 1px solid #000;
   }

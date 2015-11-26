@@ -1,22 +1,19 @@
 <div style="float: right">
-	<aside class="p-aside">
-	  <nav>
-	    <ul>
-	      <li>
-	      <%= render 'carts/display_cart' %> 
-	    </ul>
-	  </nav>
-	</aside>
-	<aside class="p-aside">
-	  <nav>
-	    <ul>
-	      <li>
-	        <%= link_to "All products", products_path, class: 'button'%>
-	      </li>
-	      <li>
-	        <%= link_to "Add new product", new_product_path(@product), class: 'button' %>
-	      </li>
-	    </ul>
-	  </nav>
-	</aside>
+  <aside class="p-aside">
+    <nav>
+      <ul>
+	    <%= render 'carts/display_cart' %> 
+	  </ul>  
+	</nav>
+  </aside>
+  <aside class="p-aside">
+	<nav>
+	  <ul>	
+	    <%= link_to "All products", products_path, class: 'button'%>
+	  </ul>
+	  <ul>
+	    <%= link_to "Add new product", new_product_path(@product), class: 'button' %>
+	  </ul>  
+	</nav>
+  </aside>
 </div>

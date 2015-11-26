@@ -1,19 +1,24 @@
 <h2>User's cart</h2>
-<p>You have <%= pluralize(check_product_quantities(@cart), 'product')  %> in your shopping cart</p>
-<table>
-<% @cart.product_items.each do |item| %>
-  <tr>
-    <td><%= item.quantity %>x </td>
-    <td><%= item.product.name %></td>
-    <td><%= number_to_currency(item.total_price, unit: "£") %></td>
-  </tr>  
-<% end %>  
-<tr class="total_value">
-  <td>Total: </td>
-  <td id="tot"><%= number_to_currency(@cart.total_price, unit: "£") %></td>
-</tr>	
-</table>
-<%= button_to 'Empty cart', cart_path(@cart), method: :delete, data: { confirm: 'Are you sure you want to empty the cart?' }, class: "button empty" %>
+<% if @cart.product_items.count > 0 %>
+  <p>You have <%= pluralize(check_product_quantities(@cart), 'product')  %> in your shopping cart</p>
+  <table>
+  <% @cart.product_items.each do |item| %>
+    <tr>
+      <td><%= item.quantity %>x </td>
+      <td><%= item.product.name %></td>
+      <td><%= number_to_currency(item.total_price, unit: "£") %></td>
+    </tr>  
+  <% end %>  
+  <tr class="total_value">
+    <td><%= content_tag(:strong, 'Total:') %> </td>
+    <td class="tot"><%= number_to_currency(@cart.total_price, unit: "£") %></td>
+  </tr>	
+  </table>
+    <%= button_to 'Empty cart', cart_path(@cart), method: :delete, data: { confirm: 'Are you sure you want to empty the cart?' }, class: "button empty" %>
+    <%= button_to 'Edit cart', cart_url(@cart), method: :get, class: "button empty" %>
+  <% else %>
+    <h3>Cart is empty</h3> 
+  <% end %>   
   
 
 
