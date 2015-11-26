@@ -18,6 +18,6 @@
   <%= link_to 'Cancel', products_path %>
 </div>
   <p>
-    <%= button_to 'Add to cart', product_items_path(@product), class: 'button add' %>
+    <%= button_to 'Add to cart', product_items_path(product: @product), remote: true, form: { "data-type" => "js" }, class: 'button add' %>
   </p>
 
