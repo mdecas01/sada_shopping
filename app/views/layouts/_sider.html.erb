@@ -1,11 +1,13 @@
 <div style="float: right">
-  <aside class="p-aside">
-    <nav>
-      <ul>
-	    <%= render 'carts/display_cart' %> 
-	  </ul>  
-	</nav>
-  </aside>
+  <% unless @cart.product_items.empty? %>
+    <aside class="p-aside">
+      <nav>
+        <ul>
+	      <%= render 'carts/display_cart' %> 
+	    </ul>  
+	  </nav>
+    </aside>
+  <% end %>
   <aside class="p-aside">
 	<nav>
 	  <ul>	

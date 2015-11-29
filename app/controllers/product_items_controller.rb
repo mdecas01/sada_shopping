@@ -8,7 +8,7 @@ class ProductItemsController < ApplicationController
       respond_to do |format|
         if @product_item.save
           format.html { redirect_to product }
-            #[:notice] = "Product successfully added!"
+          #[:notice] = "Product successfully added!"
           format.js
         else
           render :new  
