@@ -1,6 +1,6 @@
 <div style="float: right">
   <% unless @cart.product_items.empty? %>
-    <aside class="p-aside">
+    <aside class="p-aside" id="cartDisp">
       <nav>
         <ul>
 	      <%= render 'carts/display_cart' %> 
