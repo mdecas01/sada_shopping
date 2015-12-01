@@ -1,0 +1,27 @@
+<%= form_for(@order) do |f| %>
+  <%= render "errors/error_messages", object: @order %>
+  <fieldset>
+    <ol>
+      <li>
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true %>
+      </li>
+      <li>
+        <%= f.label :address %>
+        <%= f.text_area :address, cols: 40, rows: 7 %>
+      </li>
+      <li>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </li>
+      <li>
+        <%= f.label :payment_type %>
+        <%= f.select :payment_type, Order::PAYMENT, prompt: "Payment type" %>
+      </li>
+    </ol>
+    <p>
+      <%= f.submit %>
+      <%= link_to "Cancel", cart_url(@cart), method: :get, class: 'button' %>
+    </p>
+  </fieldset>
+<% end %>
