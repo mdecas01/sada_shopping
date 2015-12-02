@@ -1,13 +1,7 @@
 <h2>User's cart</h2>
 <p>You have <%= pluralize(check_product_quantities(@cart), 'product')  %> in your shopping cart</p>
-<table>
-<% @cart.product_items.each do |item| %>
-  <tr>
-    <td><%= item.quantity %>x </td>
-    <td><%= item.product.name %></td>
-    <td><%= format_price(item.product) %></td>
-  </tr>  
-<% end %>  
+<table>  
+<%= render 'form' %> 
 <tr class="total_value">
   <td>Total: </td>
   <td id="tot"><%= @cart.total_price %></td>

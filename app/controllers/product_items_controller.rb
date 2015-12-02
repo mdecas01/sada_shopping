@@ -16,6 +16,12 @@ class ProductItemsController < ApplicationController
       end  	
 	end
 
+  def update
+    fail
+    @product_item = @cart.product_items
+    @product_item.update(quantity: params[:quantity])
+  end  
+
   private
 
   def product_item_params
