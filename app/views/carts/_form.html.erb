@@ -1,5 +1,5 @@
-<%= form_for(@cart) do |f| %>
-  <% @cart.product_items.each do |item| %>
+<% @cart.product_items.each do |item| %>
+  <%= form_for(item) do |f| %>
     <tr>
       <td><%= item.quantity %>x </td>
       <td><%= item.product.name %></td>

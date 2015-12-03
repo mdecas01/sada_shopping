@@ -17,9 +17,9 @@ class ProductItemsController < ApplicationController
 	end
 
   def update
-    fail
-    @product_item = @cart.product_items
-    @product_item.update(quantity: params[:quantity])
+    product_item = ProductItem.find(params[:product_item_id])
+    product_item.update(quantity: params[:quantity])
+    redirect_to cart_url(product_item.cart_id)
   end  
 
   private
