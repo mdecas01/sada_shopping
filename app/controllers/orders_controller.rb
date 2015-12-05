@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
       if @order.save
       	Cart.destroy(session[:id])
       	session[:id] = nil
+        OrderMailer.received(@order).deliver
         flash[:notice] = "Thanks for shopping with us!"
         redirect_to products_url
       else

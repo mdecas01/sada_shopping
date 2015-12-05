@@ -1,0 +1,11 @@
+<h1>OrderMailer#received</h1>
+
+<p>
+  Hi <%= @order.name%>, This is an confirmation for the products you ordered: 
+</p>
+<p>
+  <% @order.product_items.each do |item| %>
+    <p><%= item.quantity %>x <%= item.product.name %>: <%= item.product.price %></p>
+  <% end %>  
+</p>	
+<p>The payment type chosen was: <%= @order.payment_type %></p>
