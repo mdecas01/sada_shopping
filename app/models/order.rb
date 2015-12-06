@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
 	validates :name, :address, :email, presence: true
 
 	PAYMENT = ["Check", "Credit card", "Purchase order"]
+	DISPATCHED = ["YES","NO"]
 	validates :payment_type, inclusion: { in: PAYMENT }
     
     #fetches products from the cart and adds to the order's product items
@@ -12,5 +13,13 @@ class Order < ActiveRecord::Base
         product.cart_id = nil
       	product_items << product
       end	
+	end	
+
+	def send_email?
+      if dispatched == "YES"
+      	true
+      else
+        false
+      end  	
 	end	
 end

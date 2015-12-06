@@ -1,0 +1,14 @@
+<%= form_for(@order) do |f| %>
+  <fieldset>
+    <ol>
+      <li>
+        <%= f.label :dispatched %>
+        <%= f.select :dispatched, Order::DISPATCHED, prompt: "Status"%>
+      </li>  
+    </ol>
+    <p>
+      <%= f.submit %>
+      <%= link_to "Cancel", orders_path, class: 'button' %>
+    </p>
+  </fieldset>
+<% end %>

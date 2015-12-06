@@ -4,7 +4,7 @@
       <td><%= item.quantity %>x </td>
       <td><%= item.product.name %></td>
       <td><%= format_price(item.product) %></td> 
-      <td><%= select_tag 'quantity', options_for_select(1..10, item.quantity) %>
+      <td><%= select_tag 'quantity', options_for_select(1..10, item.quantity) %></td>
       <td>
         <%= hidden_field_tag(:product_item_id, item.id) %>
         <%= f.submit 'Update item' %>

@@ -22,8 +22,10 @@
           </tr>
           <tr>
             <th>Dispatched:</th>
-            <td><%= %></td>
+            <td><%= order.dispatched %></td>
           </tr>
         </table>
       </article>
+      <%= link_to "Edit order", edit_order_path(order) %>
+      <hr>
   <% end %>

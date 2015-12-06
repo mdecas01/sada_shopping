@@ -29,9 +29,23 @@ class OrdersController < ApplicationController
       end	
 	end	
 
+  def edit
+    @order = Order.find(params[:id]) 
+  end  
+
+  def update
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    if @order.send_email?
+      OrderMailer.dispatched(@order).deliver
+    end  
+    redirect_to orders_url
+
+  end  
+
 	private
 
 	def order_params
-      params.require(:order).permit(:name, :address, :email, :payment_type)
+      params.require(:order).permit(:name, :address, :email, :payment_type, :dispatched)
 	end	
 end
