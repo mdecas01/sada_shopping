@@ -132,3 +132,12 @@ section#error_messages {
     border-top: 1px solid #000;
   }
 }
+
+div#cart {
+  float: right;
+  position: relative;
+  top: 30px;
+  right: 5px;
+  bottom: 0;
+  left: 0;
+}

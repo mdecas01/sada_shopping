@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
-	before_action :create_cart, only: [:new, :create]
-
+	before_action :create_cart, only: [:new, :create, :index]
+  
+  def index
+    @orders = Order.all
+  end 
+   
 	def new
 		###NOT SURE IF NEED THIS COS AN EMPTY CART WONT BE SHOWN ANYWAY
 	  #redirects the user to the main page if the cart is empty

@@ -1,0 +1,29 @@
+  <h1>List of orders</h1>
+  <% @orders.each do |order| %>
+      <article>
+        <header>
+          <h3>Order for user <%= order.name %></h3>
+        </header>
+        <table>
+          <% order.product_items.each do |item| %>
+            <li><%= item.quantity %>x <%= item.product.name %>: <%= item.total_price %></li>
+          <% end %>
+          <tr>
+            <th>Delivery address:</th>
+            <td><%= order.address %></td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td><%= order.email %></td>
+          </tr>
+          <tr>
+            <th>Payment type</th>
+            <td><%= order.payment_type %></td>
+          </tr>
+          <tr>
+            <th>Dispatched:</th>
+            <td><%= %></td>
+          </tr>
+        </table>
+      </article>
+  <% end %>

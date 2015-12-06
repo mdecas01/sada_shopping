@@ -17,9 +17,9 @@ class OrderMailer < ActionMailer::Base
   #
   #   en.order_mailer.dispatched.subject
   #
-  def dispatched
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def dispatched(order)
+   @order = order
+   @product_items = @order.product_items
+   mail to: @order.email, subject: "Order dispatched"
   end
 end

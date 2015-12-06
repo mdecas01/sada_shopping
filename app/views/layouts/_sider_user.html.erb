@@ -1,0 +1,14 @@
+<div>
+  <% unless @cart.product_items.empty? %>
+    <aside class="p-aside" id="cartDisp">
+      <nav>
+        <ul>
+	      <%= render 'carts/display_cart' %> 
+	    </ul> 
+	    <ul>	
+	      <%= link_to "All products", products_path, class: 'button'%>
+	    </ul> 
+	  </nav>
+    </aside>
+  <% end %>
+</div>
