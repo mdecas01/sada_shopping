@@ -6,7 +6,7 @@ describe "Viewing a product page"  do
 
     visit product_url(product)
 
-    click_link "All products"
+    click_link "Return"
 
     expect(current_path).to eq(products_path)
   end

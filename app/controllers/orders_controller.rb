@@ -17,6 +17,8 @@ class OrdersController < ApplicationController
 
 	def create
       @order = Order.new(order_params)
+      #sets the default of dispatched to no
+      @order.dispatched = "NO"
       @order.add_product(@cart)
       if @order.save
       	Cart.destroy(session[:id])

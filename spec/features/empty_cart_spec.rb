@@ -8,11 +8,9 @@ describe 'Clicking empty cart button' do
       
       click_button 'Add to cart'
 
-      click_link 'View cart'
-
       click_button 'Empty cart'
 
-      expect(@cart).to eq(nil)
+      expect(page).not_to have_text("product in your shopping cart")
 	end	
 
 	it 'displays a message' do
@@ -22,10 +20,20 @@ describe 'Clicking empty cart button' do
       
       click_button 'Add to cart'
 
-      click_link 'View cart'
-
       click_button 'Empty cart'
 
       expect(page).to have_text('Shopping cart is empty!')
 	end
+
+      it "redirects to the products catalogue page" do
+        product = Product.create(product_details)
+
+        visit product_path(product)
+      
+        click_button 'Add to cart'
+
+        click_button 'Empty cart'  
+
+        expect(current_path).to eq(products_path) 
+      end      
 end

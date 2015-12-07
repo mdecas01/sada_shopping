@@ -1,9 +1,5 @@
 @import 'color_schem';
 
-a.button {
-  border: 1px $green-color solid;
-  border-radius: 4px;
-}
 
 header#p-header { 
   padding: 7px; 
@@ -29,7 +25,7 @@ footer#p-footer {
 
 aside.p-aside {
   float: top; 
-  background: $grey-color; 
+  background: $green-color; 
   width: 300px;	
   height: 300px;
 }
@@ -140,4 +136,8 @@ div#cart {
   right: 5px;
   bottom: 0;
   left: 0;
+}
+
+#cart-buttons {
+  margin-top: 5px;
 }

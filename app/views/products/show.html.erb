@@ -23,6 +23,7 @@
   <%= link_to 'Cancel', products_path %>
 </div>
   <p>
-    <%= button_to 'Add to cart', product_items_path(product: @product), remote: true, class: 'button add' %>
+    <%= button_to 'Add to cart', product_items_path(product: @product), remote: true, class: 'button' %> |
+    <%= link_to 'Return', products_path, class: 'button' %>
   </p>
 

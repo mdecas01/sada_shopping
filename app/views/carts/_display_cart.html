@@ -13,9 +13,7 @@
     <td class="tot"><%= number_to_currency(@cart.total_price, unit: "£") %></td>
   </tr>	
   </table>
-    <%= button_to 'Empty cart', cart_path(@cart), method: :delete, data: { confirm: 'Are you sure you want to empty the cart?' }, class: "button empty" %>
-    <%= button_to 'Edit cart', cart_url(@cart), method: :get, class: "button empty" %>
-    <%= button_to 'Checkout', new_order_path, method: :get %>   
+      
   
 
 
