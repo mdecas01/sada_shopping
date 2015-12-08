@@ -10,7 +10,7 @@ module ProductsHelper
     if product.available?
       product.quantity
     else
-      "not currently available"
+      "Not currently available"
     end    
   end  
 

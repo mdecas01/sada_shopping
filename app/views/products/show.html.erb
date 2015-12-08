@@ -1,3 +1,5 @@
+<div id="noproduct">
+</div>  
 <div id="cart">
   <%= render 'layouts/sider_user' %> 
   <%= render 'layouts/sider_admin' %> 
@@ -23,7 +25,7 @@
   <%= link_to 'Cancel', products_path %>
 </div>
   <p>
-    <%= button_to 'Add to cart', product_items_path(product: @product), remote: true, class: 'button' %> |
+    <%= display_add_button(@product) %> |
     <%= link_to 'Return', products_path, class: 'button' %>
   </p>
 

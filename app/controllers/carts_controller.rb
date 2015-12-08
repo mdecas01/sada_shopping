@@ -15,6 +15,7 @@ class CartsController < ApplicationController
 
   def destroy
     if @cart.id == session[:id]
+      @cart.return_product_to_catalogue
       @cart.destroy
       session[:id] = nil
       redirect_to products_url, notice: 'Shopping cart is empty!'
