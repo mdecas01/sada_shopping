@@ -5,6 +5,7 @@ class Cart < ActiveRecord::Base
 
   def add_product_item(product)
     productItem = Product.find(product.id)
+    if productItem.quantity > 0  
     item = product_items.find_by(product_id: product.id)
     if item
       #increases the quantity in the cart
@@ -17,7 +18,10 @@ class Cart < ActiveRecord::Base
       productItem.quantity -= 1
       productItem.save
     end
-    item   
+    item 
+    else
+      false
+    end    
   end	
 
   def return_product_to_catalogue

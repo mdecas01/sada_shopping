@@ -7,18 +7,33 @@ class ProductItemsController < ApplicationController
         @product_item = @cart.add_product_item(product)
         respond_to do |format|
           if @product_item.save
-            format.html { redirect_to product }
+            format.html { redirect_to products }
             format.js
           else
-            render :new  
+           
           end 
-        end    
+        end        
   end
 
   def update
     product_item = ProductItem.find(params[:product_item_id])
-    product_item.update(quantity: params[:quantity])
-    redirect_to cart_url(product_item.cart_id)
+    product = Product.find(product_item.product_id)
+    #returns the product amount from the cart to the catalogue
+    product.quantity += product_item.quantity
+    product.save
+    #if user selected a quantity higher than the stock the order will not be updated
+    if params[:quantity].to_i <= product.quantity
+      #increases quantity in the cart
+      product_item.update(quantity: params[:quantity])
+      #decreases quantity in the catalogue
+      params[:quantity].to_i.times do 
+        product.quantity -= 1
+        product.save
+      end  
+      redirect_to cart_url(product_item.cart_id)
+    else
+      redirect_to products_url, notice: "The quantity selected exceeds the stock quantity" 
+    end   
   end  
 
   private

@@ -25,7 +25,7 @@
   <%= link_to 'Cancel', products_path %>
 </div>
   <p>
-    <%= display_add_button(@product) %> |
-    <%= link_to 'Return', products_path, class: 'button' %>
+    <div id="btn"><%= display_add_button(@product) %></div> |
+    <div id="retbtn"><%= link_to 'Return', products_path, class: 'button' %></div>
   </p>
 

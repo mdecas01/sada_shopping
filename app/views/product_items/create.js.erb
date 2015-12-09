@@ -1,2 +1,4 @@
 $('div#cart').html("<%= escape_javascript render 'layouts/sider_user' %><%= escape_javascript render 'layouts/sider_admin' %>");
+$('div#btn').html("<%= escape_javascript link_to 'Continue shopping', products_url %>");
+$('div#retbtn').hide();
     
