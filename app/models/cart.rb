@@ -4,19 +4,20 @@ class Cart < ActiveRecord::Base
   belongs_to :user
 
   def add_product_item(product)
-    productItem = Product.find(product.id)
-    if productItem.quantity > 0  
+    product_item = Product.find(product.id)
+    if product_item.quantity > 0  
     item = product_items.find_by(product_id: product.id)
     if item
       #increases the quantity in the cart
       item.quantity += 1
+      item.save
       #decreases the quantity in the catalogue
-      productItem.quantity -= 1
-      productItem.save
+      product_item.quantity -= 1
+      product_item.save
     else
       item = product_items.build(product_id: product.id)
-      productItem.quantity -= 1
-      productItem.save
+      product_item.quantity -= 1
+      product_item.save
     end
     item 
     else
