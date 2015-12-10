@@ -8,7 +8,7 @@ describe 'Clicking empty cart button' do
       
       click_button 'Add to cart'
 
-      click_button 'Empty cart'
+      click_link 'Empty cart'
 
       expect(page).not_to have_text("product in your shopping cart")
 	end	
@@ -20,7 +20,7 @@ describe 'Clicking empty cart button' do
       
       click_button 'Add to cart'
 
-      click_button 'Empty cart'
+      click_link 'Empty cart'
 
       expect(page).to have_text('Shopping cart is empty!')
 	end
@@ -32,7 +32,7 @@ describe 'Clicking empty cart button' do
       
         click_button 'Add to cart'
 
-        click_button 'Empty cart'  
+        click_link 'Empty cart'  
 
         expect(current_path).to eq(products_path) 
       end      

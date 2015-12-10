@@ -22,4 +22,13 @@ class Order < ActiveRecord::Base
         false
       end  	
 	end	
+
+  #checks if the product was already dispatched
+  def order_dispatched?
+    if dispatched == 'YES'
+      true
+    else
+      false
+    end    
+  end  
 end

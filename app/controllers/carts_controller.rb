@@ -8,9 +8,6 @@ class CartsController < ApplicationController
   end	
 
   def update
-    #product_item = @cart.product_items.find(params[:product_item_id])
-   # product_item.update(quantity: params[:quantity])
-    #redirect_to cart_url(@cart)
   end  
 
   def destroy

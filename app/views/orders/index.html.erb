@@ -1,7 +1,9 @@
+  <%= render 'layouts/flash' %>
   <h1>List of orders</h1>
   <% @orders.each do |order| %>
       <article>
         <header>
+          <h2>Order ID: <%= order.id %><h2>
           <h3>Order for user <%= order.name %></h3>
         </header>
         <table>
@@ -26,6 +28,7 @@
           </tr>
         </table>
       </article>
-      <%= link_to "Edit order", edit_order_path(order) %>
+      <%= link_to "Edit order", edit_order_path(order) %> |
+      <%= link_to "Delete order", order_path(order), method: :delete, data: { confirm: 'Are you sure you want to delete the order?' } %>
       <hr>
   <% end %>

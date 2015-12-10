@@ -20,7 +20,6 @@ describe "Viewing the list of products" do
                             quantity: 0)
   visit products_url
 
-  expect(page).to have_text("Products catalogue")
   expect(page).to have_text(product1.name)
   expect(page).to have_text(product1.description[0..6])
   expect(page).to have_text("£10.99")
@@ -28,7 +27,7 @@ describe "Viewing the list of products" do
   expect(page).to have_text(product2.description[0..6])
   expect(page).to have_text("£20.99")
 
-  expect(page).to have_text("not currently available")
+  expect(page).to have_text("Not currently available")
 end
 
   

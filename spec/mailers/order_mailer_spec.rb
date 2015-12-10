@@ -8,7 +8,7 @@ describe OrderMailer do
     it "renders the headers" do
       mail.subject.should eq("Order confirmation")
       mail.to.should eq(["romacas@hotmail.co.uk"])
-      mail.from.should eq(["from@example.com"])
+      mail.from.should eq(["admin@sadashopping.com"])
     end
 
     it "renders the body" do
@@ -16,18 +16,19 @@ describe OrderMailer do
     end
   end
 
-  #describe "dispatched" do
-   # let(:mail) { OrderMailer.dispatched }
+  describe "dispatched" do
+    order = Order.new(email: "romacas@hotmail.co.uk")
+    let(:mail) { OrderMailer.dispatched(order) }
 
-    #it "renders the headers" do
-     # mail.subject.should eq("Dispatched")
-      #mail.to.should eq(["to@example.org"])
-      #mail.from.should eq(["from@example.com"])
-    #end
+    it "renders the headers" do
+      mail.subject.should eq("Order dispatched")
+      mail.to.should eq(["romacas@hotmail.co.uk"])
+      mail.from.should eq(["admin@sadashopping.com"])
+    end
 
-    #it "renders the body" do
-     # mail.body.encoded.should match("Hi")
-    #end
- # end
+    it "renders the body" do
+      mail.body.encoded.should match(" has already been dispatched")
+    end
+  end
 
 end

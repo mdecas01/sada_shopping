@@ -8,7 +8,7 @@ require 'spec_helper'
 
       click_button 'Add to cart'
 
-      click_button 'Checkout'
+      click_link 'Checkout'
 
       fill_in "Name", with: "Rodrigo"
       fill_in "Address", with: "Lucey way, London"
@@ -27,7 +27,7 @@ require 'spec_helper'
 
       click_button 'Add to cart'
 
-      click_button 'Checkout'
+      click_link 'Checkout'
 
       fill_in "Name", with: "Rodrigo"
       fill_in "Address", with: "Lucey way, London"

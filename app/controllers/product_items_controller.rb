@@ -7,20 +7,15 @@ class ProductItemsController < ApplicationController
         @product_item = @cart.add_product_item(product)
         respond_to do |format|
           if @product_item.save
-            format.html { redirect_to products }
+            format.html { redirect_to products_path }
             format.js
-          else
-           
-          end 
+          end
         end        
   end
 
   def update
     product_item = ProductItem.find(params[:product_item_id])
     product = Product.find(product_item.product_id)
-    #returns the product amount from the cart to the catalogue
-        #product.quantity += product_item.quantity
-         # product.save
     #if user selected a quantity higher than the stock the order will not be updated
     if params[:quantity].to_i <= product.quantity + product_item.quantity
       #returns the product amount from the cart to the catalogue
@@ -40,9 +35,9 @@ class ProductItemsController < ApplicationController
     end   
   end  
 
-  private
+  #private
 
-  def product_item_params
-    params.require(:product_item).permit(:product)
-  end 
+  #def product_item_params
+   # params.require(:product_item).permit(:product)
+ # end 
 end
