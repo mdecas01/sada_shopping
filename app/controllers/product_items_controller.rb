@@ -35,6 +35,17 @@ class ProductItemsController < ApplicationController
     end   
   end  
 
+  def destroy
+    @product_item = ProductItem.find(params[:id])
+    #selects the product in the order
+    @product = Product.find(@product_item.product_id)
+    #returns the quantity to the product database
+    @product.quantity += @product_item.quantity
+    @product.save
+    @product_item.destroy
+    redirect_to cart_path(@product_item.cart), notice: 'The product has been deleted from your order!'
+  end  
+
   #private
 
   #def product_item_params

@@ -2,7 +2,11 @@ class OrdersController < ApplicationController
 	before_action :create_cart, only: [:new, :create, :index]
   
   def index
-    @orders = Order.all
+    if params[:search]
+      @order = Order.find(params[:search])
+    else  
+      @orders = Order.all
+    end  
   end 
    
 	def new
