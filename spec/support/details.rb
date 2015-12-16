@@ -6,3 +6,16 @@ def product_details(overrides = {})
    quantity: 1
   }.merge(overrides)
 end
+
+
+
+def user_details(overrides = {})
+  {
+    name: "User1",
+    email: "user1@example.com",
+    password: "password",
+    password_confirmation: "password"
+  }.merge(overrides)
+end
+
+

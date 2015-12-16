@@ -10,6 +10,17 @@ header#p-header {
   h1 {
     text-align: center;
   }
+
+  a.button {
+    position: relative;
+    left: 1000px;
+    &:hover {
+      background-color: #000;
+      color: #fff;
+      border-color: #000;
+      text-decoration: none;
+    }
+  }
 }
  
 footer#p-footer { 
@@ -142,12 +153,5 @@ div#cart {
   margin-top: 5px;
 }
 
-div#addbtn {
-  margin: 0;
-  padding: 0;
-  display: inline;
+ 
 
-  p {
-  color: red;
-  }
-} 
