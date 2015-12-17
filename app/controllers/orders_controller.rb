@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
 	before_action :create_cart, only: [:new, :create, :index]
+  before_action :request_signin_first, only: [:new, :create, :index]
   
   def index
     if params[:search]
@@ -10,7 +11,6 @@ class OrdersController < ApplicationController
   end 
    
 	def new
-		###NOT SURE IF NEED THIS COS AN EMPTY CART WONT BE SHOWN ANYWAY
 	  #redirects the user to the main page if the cart is empty
       if @cart.product_items.empty?
         redirect_to products_url, notice: "cart is empty"
