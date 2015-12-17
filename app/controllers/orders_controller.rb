@@ -10,13 +10,8 @@ class OrdersController < ApplicationController
     end  
   end 
    
-	def new
-	  #redirects the user to the main page if the cart is empty
-      if @cart.product_items.empty?
-        redirect_to products_url, notice: "cart is empty"
-      end	
-
-      @order = Order.new
+	def new	
+    @order = Order.new
 	end	
 
 	def create
