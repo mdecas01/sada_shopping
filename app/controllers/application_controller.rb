@@ -7,10 +7,10 @@ class ApplicationController < ActionController::Base
   
   #creates a cart if no one  exists yet
   def create_cart
-    @cart = Cart.find(session[:id])
-  rescue ActiveRecord::RecordNotFound
+   unless @cart = Cart.find(session[:id])
     @cart = Cart.create
     session[:id] = @cart.id
+   end 
   end
   
   #restricts access to not signed in users

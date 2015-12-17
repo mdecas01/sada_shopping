@@ -19,7 +19,7 @@ class CartsController < ApplicationController
     end  
   end  
 
-  protected
+  private
 
   def id_not_found
     flash[:notice] = 'Sorry, cart not found!'
