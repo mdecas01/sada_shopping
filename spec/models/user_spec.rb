@@ -87,4 +87,28 @@ describe "The user" do
 
     expect(user.password_digest.present?).to eq(true)
   end
+
+  it "is valid if the combination email/password matches" do
+    user = User.create!(user_details)
+
+    returned_user = User.authenticate(user.email, user.password)
+
+    expect(returned_user).to eq(user)
+  end  
+
+  it "is not valid if the email does not matches" do
+    user = User.create!(user_details)
+
+    returned_user = User.authenticate("something", user.password)
+
+    expect(returned_user).not_to eq(user)
+  end 
+
+  it "is not valid if the password does not matches" do
+    user = User.create!(user_details)
+
+    returned_user = User.authenticate(user.email, "something")
+
+    expect(returned_user).not_to eq(user)
+  end
 end

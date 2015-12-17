@@ -12,6 +12,8 @@ describe "Viewing a list of users"  do
     	                password: "hugesecret",
     	                password_confirmation: "hugesecret")
 
+  sign_in_user(user1)
+
   visit users_url
 
   expect(page).to have_text(user1.name)

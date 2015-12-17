@@ -31,7 +31,7 @@ class ProductItemsController < ApplicationController
       redirect_to cart_url(product_item.cart_id)
     else
       #product_item.update(:quantity 0)
-      redirect_to cart_url(product_item.cart), notice: "The quantity selected exceeds the stock quantity" 
+      redirect_to cart_url(product_item.cart), alert: "The quantity selected exceeds the stock quantity" 
     end   
   end  
 

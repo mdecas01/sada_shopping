@@ -6,7 +6,7 @@ describe "Signing in" do
 
     click_link 'Sign In'
 
-    expect(current_url).to eq(new_session_url)
+    expect(current_url).to eq(signin_url)
 
     expect(page).to have_field("Email")
     expect(page).to have_field("Password")
@@ -25,7 +25,7 @@ describe "Signing in" do
     click_button 'Sign In'
 
     expect(current_url).to eq(user_url(user))
-    expect(page).to have_text("Hello #{user.name}!")
+    expect(page).to have_text("Hello, #{user.name}!")
   end
 
   it "does not sign the user in, and displays the error if the email and/or password are incorrect" do
@@ -40,7 +40,16 @@ describe "Signing in" do
 
     click_button 'Sign In'
 
-    expect(current_url).to eq(signin_url)
-    expect(page).to have_text("Invalid email/password!")
-   end	
+    expect(page).to have_text("Invalid email/password combination!")
+  end	
+
+  it "redirects the user to the desired URL" do
+    user = User.create!(user_details)
+
+    visit users_url
+
+    sign_user_in(user)
+
+    expect(current_path).to eq(users_path)
+  end  
 end

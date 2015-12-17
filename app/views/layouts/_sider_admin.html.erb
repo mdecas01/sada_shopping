@@ -1,12 +1,15 @@
 <div>
   <aside class="p-aside">
 	<nav>
-	  <ul>
+	  <p>
 	    <%= link_to "Add new product", new_product_path(@product), class: 'button' %>
-	  </ul> 
-	  <ul>
-	    <%= link_to "See orders", orders_url, class: 'button' %>
-	  </ul>  
+	  </p> 
+	  <p>
+	    <%= link_to "Orders", orders_url, class: 'button' %>
+	  </p>
+	  <p>
+        <%= link_to "Users", users_path, class: 'button' %>
+	  </p>  
 	</nav>
   </aside>
 </div>

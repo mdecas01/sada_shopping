@@ -4,7 +4,9 @@ describe "editing a user" do
 
   it "redirects to the edit url when edit account link is clicked" do
     user = User.create!(user_details)
-
+    
+    sign_in_user(user)
+    
     visit user_url(user)
 
     click_link 'Edit account'
@@ -15,6 +17,8 @@ describe "editing a user" do
     it "populates the edit form with the details of the current user" do
     user = User.create!(user_details)
 
+    sign_in_user(user)
+
     visit user_url(user)
 
     click_link 'Edit account'
@@ -24,6 +28,8 @@ describe "editing a user" do
 
   it "updates the user details and redirects to the user's profile" do
     user = User.create!(user_details)
+    
+    sign_in_user(user)
 
     visit user_url(user)
 
@@ -40,6 +46,8 @@ describe "editing a user" do
 
   it "does not update the user if any detail is invalid" do
     user = User.create!(user_details)
+    
+    sign_in_user(user)
 
     visit edit_user_url(user)
 

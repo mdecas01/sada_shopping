@@ -3,9 +3,14 @@
   <h1><%= @user.name %></h1>
   <h3><%= mail_to @user.email %></h3>
   <p>User since: <%= time_ago_in_words(@user.created_at) %></p>
-  <%= link_to 'Edit account', edit_user_path(@user), class: 'button' %> |
-  <%= link_to 'Delete account', user_path(@user), 
-                                method: :delete, 
-                                data: {confirm: 'Are you sure you want to delete your account?'},
-                                class: 'button' %>
+  <% if logged_user?(@user) %>
+    <%= link_to 'Edit account', edit_user_path(@user), class: 'button' %> 
+    <%= link_to 'Delete account', user_path(@user), 
+                                  method: :delete, 
+                                  data: {confirm: 'Are you sure you want to delete your account?'},
+                                  class: 'button' %>
+  <% else %>
+     <%= link_to 'Users', users_path, class: 'button' %>
+     <%= link_to 'Shop', products_path, class: 'button' %>
+  <% end %>   
 </article>	

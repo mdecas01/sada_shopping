@@ -6,4 +6,11 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 8,
                                  maximum: 15,
                                  allow_blank: true }
+
+  #Checks if the username and password combination is valid
+  #BASED ON EXAMPLE FROM PRAGMATIC STUDIO
+  def self.authenticate(email, password)
+    user = User.find_by(email: email)
+    user && user.authenticate(password)
+  end                               
 end
