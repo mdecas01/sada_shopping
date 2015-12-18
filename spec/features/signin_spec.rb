@@ -48,7 +48,7 @@ describe "Signing in" do
 
     visit users_url
 
-    sign_user_in(user)
+    sign_in_user(user)
 
     expect(current_path).to eq(users_path)
   end  

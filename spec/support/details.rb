@@ -18,4 +18,13 @@ def user_details(overrides = {})
   }.merge(overrides)
 end
 
+def order_details(overrides = {})
+  {
+    name: "User1",
+    address: "Bermondsey, London",
+    email: "user1@example.com",
+    payment_type: "Check"
+  }.merge(overrides)
+end
+
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151211210106) do
+ActiveRecord::Schema.define(version: 20151218173015) do
 
   create_table "carts", force: true do |t|
     t.integer  "user_id"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20151211210106) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin",           default: false
   end
 
 end

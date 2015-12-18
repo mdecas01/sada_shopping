@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe "Editing a product details" do 
+
+  before do
+    user_admin = User.create!(user_details(admin: true))
+    sign_in_user(user_admin)
+  end
+
   it "fills the forms with the products details" do
     product = Product.create(product_details)
 

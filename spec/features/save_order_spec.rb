@@ -1,6 +1,12 @@
 require 'spec_helper'
 
   describe "Clicking the checkout button" do
+
+    before do
+      @user = User.create!(user_details)
+      sign_in_user(@user)
+    end 
+    
     it "shows a message confirming the order" do
       product = Product.create(product_details)
 

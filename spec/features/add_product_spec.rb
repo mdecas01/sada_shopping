@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe "Adding a new product" do
+
+  before do
+    user_admin = User.create!(user_details(admin: true))
+    sign_in_user(user_admin)
+  end
+
   it "saves the product and shows the product's details" do
     visit products_url
 

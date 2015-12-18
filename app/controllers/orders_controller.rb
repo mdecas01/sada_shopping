@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
 	before_action :create_cart, only: [:new, :create, :index]
   before_action :request_signin_first, only: [:new, :create, :index]
+  before_action :allow_admin_user, only: [:edit, :update, :destroy]
   
   def index
     if params[:search]

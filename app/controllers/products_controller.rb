@@ -1,7 +1,14 @@
 class ProductsController < ApplicationController
 
 	before_action :set_products, except: [:index, :new, :create]
+  #creates a cart if one not exists yet
   before_action :create_cart
+
+  #requests the user to sign in if he/she has not already done so
+  before_action :request_signin_first, except: [:index, :show]
+  
+  #checks if the logged user is an admin
+  before_action :allow_admin_user, except: [:index, :show]
 
 	def index
       @products = Product.all

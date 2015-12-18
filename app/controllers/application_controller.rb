@@ -13,6 +13,11 @@ class ApplicationController < ActionController::Base
     session[:id] = @cart.id
   end
   
+  #checks if the user is logged and is an admin
+  def admin_user?
+    logged_user && logged_user.admin?
+  end  
+  
   #restricts access to not signed in users
   def request_signin_first
     unless logged_user
@@ -37,4 +42,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :logged_user?
 	
+  #if the user is not an admin redirects to the main page
+  def allow_admin_user
+    unless admin_user?
+      redirect_to products_url, alert: "You are not authorized to perform this action!"
+    end  
+  end  
 end

@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe "Deleting a product" do 
+
+  
+before do
+  user_admin = User.create!(user_details(admin: true))
+  sign_in_user(user_admin)
+end
+	
   it "removes the product from the database" do 
     product = Product.create(product_details)
 
