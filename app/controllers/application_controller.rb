@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
   def admin_user?
     logged_user && logged_user.admin?
   end  
+
+  helper_method :admin_user?
   
   #restricts access to not signed in users
   def request_signin_first

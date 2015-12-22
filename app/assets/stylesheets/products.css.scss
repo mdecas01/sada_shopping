@@ -3,8 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'color_schem';
 
-article.product {
+.product {
   margin-bottom: 2cm;
+  width: 90%;
+  
   img {
     float: left;
     margin: 0 15px;

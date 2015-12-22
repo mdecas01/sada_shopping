@@ -1,8 +1,7 @@
 <div id="noproduct">
 </div>  
 <div id="cart">
-  <%= render 'layouts/sider_user' %> 
-  <%= render 'layouts/sider_admin' %> 
+  <%= render 'layouts/sider_user' %>  
 </div>
 <%= render 'layouts/flash' %>
 <article> 
@@ -19,11 +18,13 @@
     <%= format_price(@product) %>
   </p>
 </article>
-<div id="prod_links">
-  <%= link_to "Edit product", edit_product_path(@product) %> |
-  <%= link_to 'Delete product', product_path(@product), method: :delete, data: { confirm: 'Are you sure you want to delete this product?' } %> |
-  <%= link_to 'Cancel', products_path %>
-</div>
+<% if admin_user? %>
+  <div id="prod_links">
+    <%= link_to "Edit product", edit_product_path(@product) %> |
+    <%= link_to 'Delete product', product_path(@product), method: :delete, data: { confirm: 'Are you sure you want to delete this product?' } %> |
+    <%= link_to 'Cancel', products_path %>
+  </div>
+<% end %>  
   <p>
     <div id="btn"><%= display_add_button(@product) %></div> 
     <div id="retbtn"><%= link_to 'Return', products_path, class: 'button' %></div>

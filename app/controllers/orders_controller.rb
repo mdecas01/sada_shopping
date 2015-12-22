@@ -4,10 +4,11 @@ class OrdersController < ApplicationController
   before_action :allow_admin_user, only: [:edit, :update, :destroy]
   
   def index
-    if params[:search]
-      @order = Order.find(params[:search])
-    else  
+    if admin_user?
       @orders = Order.all
+    else 
+      #gets the orders for the specific user
+      @orders = Order.where(:name => logged_user.name) 
     end  
   end 
    
@@ -19,6 +20,8 @@ class OrdersController < ApplicationController
       @order = Order.new(order_params)
       #sets the default of dispatched to no
       @order.dispatched = "NO"
+      @order.name = logged_user.name
+      @order.email = logged_user.email
       @order.add_product(@cart)
       if @order.save
       	Cart.destroy(session[:id])
@@ -57,6 +60,6 @@ class OrdersController < ApplicationController
 	private
 
 	def order_params
-      params.require(:order).permit(:name, :address, :email, :payment_type, :dispatched)
+      params.require(:order).permit(:address, :payment_type, :dispatched)
 	end	
 end
