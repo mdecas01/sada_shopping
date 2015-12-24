@@ -1,0 +1,19 @@
+<%= form_for([@product, @review]) do |f| %>
+<%= render "errors/error_messages", object: @review %>
+  <fieldset>
+    <ol>
+      <li>
+        <%= f.label :stars %>
+        <%= f.select :stars, Review::STARS, prompt: "Choose one" %>
+      </li>
+      <li>
+        <%= f.label :comment %>
+        <%= f.text_area :comment, cols: 80, placeholder: "Give your opinion" %>
+      </li>
+    </ol>
+    <p>
+      <%= f.submit 'Post Review', class: 'button' %>
+      <%= link_to "Cancel", @product, class: 'button' %>
+    </p>
+  </fieldset>
+<% end %>

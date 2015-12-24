@@ -11,17 +11,14 @@
 
 <%= render 'layouts/header' %>
 
-<div id="wrapper">
+<div id="main">
   <div id="container">
-  	<section id="sidebar">
       <%= render 'layouts/sider_admin' %>
-    </section>
     <section id="content">  
       <%= yield %>
     </section>  
-  <div>  
-<div>	
-
-<%= render 'layouts/footer' %>	
-</body>
+  </div>  
+</div>
+ <%= render 'layouts/footer' %>
+</body>  
 </html>

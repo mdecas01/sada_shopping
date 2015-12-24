@@ -1,7 +1,6 @@
 class Order < ActiveRecord::Base
 	has_many :product_items, dependent: :destroy
-
-	validates :name, :address, :email, presence: true
+  belongs_to :user
 
 	PAYMENT = ["Check", "Credit card", "Purchase order"]
 	DISPATCHED = ["YES","NO"]

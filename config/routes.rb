@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+  root 'products#index'
+
   resource :session
 
   get 'signin' => 'sessions#new'
@@ -7,10 +8,10 @@ Rails.application.routes.draw do
   resources :users
 
   resources :orders
-
-  root 'products#index'
   resources :product_items
   resources :carts	
-  resources :products
+  resources :products do
+    resources :reviews
+  end  
 
 end

@@ -17,6 +17,10 @@
   <p>
     <%= format_price(@product) %>
   </p>
+  <p>
+    <%= link_to pluralize(@product.reviews.size, 'Review'), product_reviews_url(@product), class: 'button' %>
+    <%= link_to 'Write review', new_product_review_path(@product) %>
+  </p>  
 </article>
 <% if admin_user? %>
   <div id="prod_links">

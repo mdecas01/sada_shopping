@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151218173015) do
+ActiveRecord::Schema.define(version: 20151223201446) do
 
   create_table "carts", force: true do |t|
     t.integer  "user_id"
@@ -22,13 +22,12 @@ ActiveRecord::Schema.define(version: 20151218173015) do
   add_index "carts", ["user_id"], name: "index_carts_on_user_id"
 
   create_table "orders", force: true do |t|
-    t.string   "name"
-    t.text     "address"
-    t.string   "email"
     t.string   "payment_type"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "dispatched"
+    t.text     "address"
+    t.integer  "user_id"
   end
 
   create_table "product_items", force: true do |t|
@@ -53,6 +52,18 @@ ActiveRecord::Schema.define(version: 20151218173015) do
     t.datetime "updated_at"
     t.integer  "quantity"
   end
+
+  create_table "reviews", force: true do |t|
+    t.integer  "stars"
+    t.text     "comment"
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["product_id"], name: "index_reviews_on_product_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

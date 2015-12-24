@@ -27,4 +27,11 @@ def order_details(overrides = {})
   }.merge(overrides)
 end
 
+def review_details(overrides = {})
+  {
+    stars: 3,
+    comment: "Excelent product!"
+  }.merge(overrides)
+end
+
 

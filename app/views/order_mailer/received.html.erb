@@ -1,6 +1,6 @@
 <h1>Order ID: <%= @order.id %></h1>
 <h2>
-  Hi <%= @order.name%>, This is an confirmation for the products you ordered: 
+  Hi <%= @order.user.name%>, This is an confirmation for the products you ordered: 
 </h2>
 <ul>
   <% @order.product_items.each do |item| %>

@@ -24,10 +24,10 @@ class ProductItemsController < ApplicationController
       #increases quantity in the cart
       product_item.update(quantity: params[:quantity])
       #decreases quantity in the catalogue
-      params[:quantity].to_i.times do 
-        product.quantity -= 1
-        product.save
-      end  
+      #params[:quantity].to_i.times do 
+       # product.quantity -= 1
+       # product.save
+      #end  
       redirect_to cart_url(product_item.cart_id)
     else
       #product_item.update(:quantity 0)

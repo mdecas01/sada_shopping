@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
       @orders = Order.all
     else 
       #gets the orders for the specific user
-      @orders = Order.where(:name => logged_user.name) 
+      @orders = Order.where(:user => logged_user.name) 
     end  
   end 
    
@@ -20,9 +20,10 @@ class OrdersController < ApplicationController
       @order = Order.new(order_params)
       #sets the default of dispatched to no
       @order.dispatched = "NO"
-      @order.name = logged_user.name
-      @order.email = logged_user.email
+      @order.user = logged_user
       @order.add_product(@cart)
+      #decreases the quantity in the catalogue according to the order quantity
+      change_quantity_in_catalogue(@order)  ##
       if @order.save
       	Cart.destroy(session[:id])
       	session[:id] = nil
@@ -61,5 +62,15 @@ class OrdersController < ApplicationController
 
 	def order_params
       params.require(:order).permit(:address, :payment_type, :dispatched)
-	end	
+	end
+
+  def change_quantity_in_catalogue(order)
+    order.product_items.each do |product_item|
+      product = Product.find(product_item.product.id)
+      product_item.quantity.to_i.times do 
+        product.quantity -= 1
+        product.save
+      end
+    end  
+  end  
 end

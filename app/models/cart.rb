@@ -12,12 +12,12 @@ class Cart < ActiveRecord::Base
       item.quantity += 1
       item.save
       #decreases the quantity in the catalogue
-      product_item.quantity -= 1
-      product_item.save
+      #product_item.quantity -= 1
+     # product_item.save
     else
       item = product_items.build(product_id: product.id)
-      product_item.quantity -= 1
-      product_item.save
+     # product_item.quantity -= 1
+     # product_item.save
     end
     item 
     else

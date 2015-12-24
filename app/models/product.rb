@@ -11,6 +11,7 @@ class Product < ActiveRecord::Base
               }
     
     has_many :product_items
+    has_many :reviews, dependent: :destroy
     
     #checks if the product is related to any cart
     before_destroy :check_product_lines

@@ -9,7 +9,7 @@ class OrderMailer < ActionMailer::Base
   def received(order)
     @order = order
     @product_items = @order.product_items
-    mail to: @order.email, subject: "Order confirmation"
+    mail to: @order.user.email, subject: "Order confirmation"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -20,6 +20,6 @@ class OrderMailer < ActionMailer::Base
   def dispatched(order)
    @order = order
    @product_items = @order.product_items
-   mail to: @order.email, subject: "Order dispatched"
+   mail to: @order.user.email, subject: "Order dispatched"
   end
 end

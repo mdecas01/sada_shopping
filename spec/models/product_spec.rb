@@ -92,4 +92,24 @@ describe "A product" do
      expect(product.errors[:image_url].any?).to eq(false)
      expect(product2.errors[:image_url].any?).to eq(true)
   end 
+
+  it "has many reviews" do
+    product = Product.new(product_details)
+
+    review1 = product.reviews.new(review_details)
+    review2 = product.reviews.new(review_details)
+
+    expect(product.reviews).to include(review1)
+    expect(product.reviews).to include(review2)
+  end
+
+it "deletes associated reviews" do
+  product = Product.create(product_attributes)
+
+  product.reviews.create(review_details)
+
+  expect {
+    product.destroy
+  }.to change(Review, :count).by(-1)
+end
 end
