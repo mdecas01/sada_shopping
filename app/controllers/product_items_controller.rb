@@ -19,7 +19,7 @@ class ProductItemsController < ApplicationController
     #if user selected a quantity higher than the stock the order will not be updated
     if params[:quantity].to_i <= product.quantity + product_item.quantity
       #returns the product amount from the cart to the catalogue
-      product.quantity += product_item.quantity
+      #product.quantity += product_item.quantity
       product.save
       #increases quantity in the cart
       product_item.update(quantity: params[:quantity])
@@ -40,7 +40,7 @@ class ProductItemsController < ApplicationController
     #selects the product in the order
     @product = Product.find(@product_item.product_id)
     #returns the quantity to the product database
-    @product.quantity += @product_item.quantity
+    #@product.quantity += @product_item.quantity
     @product.save
     @product_item.destroy
     redirect_to cart_path(@product_item.cart), notice: 'The product has been deleted from your order!'

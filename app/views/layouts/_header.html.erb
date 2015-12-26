@@ -1,19 +1,17 @@
-<header id="p-header">
-<div>	
+<header id="pheader">
+<div id="headernav">
   <h1>SADA Shopping </h1>
   <nav>
-  	<div id="header-nav">
       <p>
       	<% if logged_user %>
-          Hello, <%= link_to logged_user.name, logged_user %> |
+          Hello, <%= link_to logged_user.name, logged_user %> 
           <%= link_to "Account Settings", edit_user_path(logged_user) %>
           <%= link_to 'Sign Out', session_path, method: :delete, class: 'button' %>
         <% else %>  
           <%= link_to 'Sign Up', signup_path, class: 'button' %> 
           <%= link_to 'Sign In', signin_path, class: 'button' %>
         <% end %>  
-      </p>
-    </div>  
+      </p> 
   </nav>  
 </div>  
 </header>

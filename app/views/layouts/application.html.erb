@@ -14,11 +14,17 @@
 <div id="main">
   <div id="container">
       <%= render 'layouts/sider_admin' %>
-    <section id="content">  
+    <section id="content"> 
+      <div id="cart">
+        <%= render 'layouts/sider_user' %>  
+      </div>
       <%= yield %>
     </section>  
+
   </div>  
 </div>
- <%= render 'layouts/footer' %>
+
+<%= render 'layouts/footer' %>
+
 </body>  
 </html>

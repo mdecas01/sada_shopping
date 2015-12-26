@@ -25,34 +25,70 @@ div#main {
 }  
 
 aside#sidebar {
-  width: 200px;
-  height: 1000%;
+  width: 300px;
+  height: 1000px;
   float: left;
   background: $green-color; 
+
+  ol {
+    marging-left: 20px;
+  }
 }
 
-header#p-header { 
-  padding: 7px; 
-  color: $grey-color; 
-  background: $green-color;
-  border-bottom: 5px solid darken($blue-color, 5%);
+header#pheader {
+  background-color: green;
+  padding: 0px 25px;
 
-  h1 {
-    text-align: center;
+  h1 a {
+    height: 0px;
+    padding-top: 60px;
+    display: block;
+    font-family: "Esteban", sans-serif;
+    color: #fff;
+    text-decoration: none;
+    overflow: hidden;
+    background: image-url("logo.png") no-repeat 0 0;
   }
 
   a.button {
+    margin-left: 10px;
+    border-color: $blue-color;
     &:hover {
       background-color: #000;
       color: #fff;
-      border-color: #000;
+      border-color: $blue-color;
       text-decoration: none;
     }
   }
 
-  #header-nav {
+  div#headernav {
+    margin: 0 auto;
+    width: 960px;
     position: relative;
-    left: 1000px;
+    text-color: #000;
+
+    h1 {
+      margin: 0;
+      color: #fff;
+      line-height: 60px;
+    }
+
+    nav {
+      margin: 0;
+      position: absolute;
+      color: blue;
+      top: 0;
+      right: 0;
+      height: 60px;
+      a {
+        color: #FFF;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
   }
 }
  
@@ -141,8 +177,7 @@ section#error_messages {
 .flash {
   border-radius: 4px;
   padding: 20px;
-  margin-left: 400px;
-  width: 300px;
+  width: 900px;
   height: 20px;
   text-align: center;
   text-transform: uppercase;
@@ -169,6 +204,7 @@ section#error_messages {
 div#cart {
   float: right;
   position: relative;
+  background: $green-color;
   top: 30px;
   right: 5px;
   bottom: 0;
@@ -182,6 +218,8 @@ div#cart {
 article.product {
   position: relative;
   left: 100px;
+  padding-bottom: 20px;
+  border-bottom: 1px #000 solid;
 }
 
 
@@ -201,4 +239,14 @@ article.product {
 /* End hide from IE-mac */
 /* @end */
 
+
+#user-cart {
+  width: 300px;
+  float: right;
+}  
+
+#productCont {
+  margin: 10px;
+  right: 20px;
+}
 

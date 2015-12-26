@@ -1,10 +1,7 @@
-<div id="noproduct">
-</div>  
-<div id="cart">
-  <%= render 'layouts/sider_user' %>  
-</div>
+
 <%= render 'layouts/flash' %>
-<article> 
+<div id="productCont"> 
+<article>
   <header>
     <h1><%= @product.name %></h1>
   </header>
@@ -33,4 +30,4 @@
     <div id="btn"><%= display_add_button(@product) %></div> 
     <div id="retbtn"><%= link_to 'Return', products_path, class: 'button' %></div>
   </p>
-
+</div>

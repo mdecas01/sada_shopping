@@ -1,7 +1,4 @@
-<div id="cart">
-  <%= render 'layouts/sider_user' %> 
-  <%= render 'layouts/sider_admin' %> 
-</div>
+
 <%= render 'layouts/flash' %>
 <h2>User's cart</h2>
 <p>You have <%= pluralize(check_product_quantities(@cart), 'product')  %> in your shopping cart</p>
