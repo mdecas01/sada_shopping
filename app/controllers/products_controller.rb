@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
   before_action :allow_admin_user, except: [:index, :show]
 
 	def index
-      @products = Product.all
+      @products = Product.all.page(params[:page]).per_page(10)
 	end	
 
 	def show
@@ -35,6 +35,9 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_attributes)
+    params[:category].each do |cat| 
+      @product.categories << Category.find(cat[1])  
+    end
     if @product.save
       flash[:notice] = "Product successfully created!"
       redirect_to @product
@@ -59,7 +62,7 @@ class ProductsController < ApplicationController
     
     #set attributes that can be assigned
     def product_attributes
-      params.require(:product).permit(:id, :name, :description, :price, :quantity, :image_url)
+      params.require(:product).permit(:id, :name, :description, :price, :quantity, :image_url, :category)
     end
 
 end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :categories
+
   root 'products#index'
 
   resource :session

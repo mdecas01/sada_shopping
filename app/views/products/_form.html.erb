@@ -22,6 +22,18 @@
         <%= f.label :image_url %>
         <%= f.text_field :image_url %>
       </li>
+      <li>
+         <%= f.label :category_1 %>
+         <%= collection_select(:category, :category1_id, Category.where(level: 1), :id, :name, include_blank: false) %>
+      </li> 
+      <li>
+         <%= f.label :category_2 %>
+         <%= collection_select(:category, :category2_id, Category.where(level: 2), :id, :name, include_blank: false) %>
+      </li>
+      <li>
+         <%= f.label :category_3 %>
+         <%= collection_select(:category, :category3_id, Category.where(level: 3), :id, :name, include_blank: false) %>
+      </li> 
     </ol>
     <p>
       <%= f.submit %>

@@ -8,10 +8,13 @@ class Product < ActiveRecord::Base
     validates :image_url, allow_blank: true, format: {
                with:    /\w+\.(gif|jpg|png)\z/i,
                message: "Only GIF, JPG, or PNG images are allowed"
-              }
+              }        
     
     has_many :product_items
     has_many :reviews, dependent: :destroy
+    has_many :categorization, dependent: :destroy
+    has_many :categories, through: :categorization
+
     
     #checks if the product is related to any cart
     before_destroy :check_product_lines

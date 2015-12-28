@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   
   def index
     if admin_user?
-      @orders = Order.all
+      @orders = Order.all.page(params[:page]).per_page(3)
     else 
       #gets the orders for the specific user
       @orders = Order.where(:user => logged_user.name) 
