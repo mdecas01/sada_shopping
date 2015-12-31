@@ -50,4 +50,16 @@ class ApplicationController < ActionController::Base
       redirect_to products_url, alert: "You are not authorized to perform this action!"
     end  
   end  
+
+  def find_category_name(category_id)
+    if category_id.nil?
+      "None"
+    else  
+      Category.find(category_id).name
+    end  
+  end 
+
+  helper_method :find_category_name 
+
+  
 end

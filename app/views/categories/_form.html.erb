@@ -1,0 +1,18 @@
+<%= form_for(@category) do |f| %>
+  <%= render "errors/error_messages", object: @category %>
+  <fieldset>
+    <ol>
+      <li>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </li>
+      <li>
+        <%= f.label :level %>
+        <%= f.select :level, Category::LEVEL, prompt: "Choose a level" %>
+      </li>  
+    </ol>
+    <p>
+      <%= f.submit %>
+    </p>
+  </fieldset>
+<% end %>

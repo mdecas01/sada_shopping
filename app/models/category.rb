@@ -6,6 +6,8 @@ class Category < ActiveRecord::Base
   has_many :categorizations, dependent: :destroy
   has_many :products, through: :categorizations
 
+  LEVEL = [1, 2, 3]
+
   def to_s
     self.name
   end	

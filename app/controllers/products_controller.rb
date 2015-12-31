@@ -31,19 +31,27 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-  end	
+  end
 
   def create
+    
     @product = Product.new(product_attributes)
-    params[:category].each do |cat| 
-      @product.categories << Category.find(cat[1])  
-    end
-    if @product.save
-      flash[:notice] = "Product successfully created!"
-      redirect_to @product
+
+    if check_categories_relation(params[:category]) #######################HERE##########
+      params[:category].each do |cat| #############################HERE#################
+        @product.categories << Category.find(cat[1])  #######################HERE#####################
+      end                         
+      
+      if @product.save
+        flash[:notice] = "Product successfully created!"
+        redirect_to @product
+      else
+        render :new  
+      end	
     else
-      render :new  
-    end	
+      flash[:alert] = "Category Problem"
+      redirect_to products_url
+    end    
   end
 
     def destroy
@@ -64,5 +72,12 @@ class ProductsController < ApplicationController
     def product_attributes
       params.require(:product).permit(:id, :name, :description, :price, :quantity, :image_url, :category)
     end
+    
+    #checks if the relation of the child and parent categories is correct
+    def check_categories_relation(category_ids) ##################HERE##############
+      cat = Category.find(category_ids.values[1])
+      cat2 = Category.find(category_ids.values[2])
+      cat.parent == category_ids.values[0].to_i && cat2.parent == category_ids.values[1].to_i
+    end  
 
 end

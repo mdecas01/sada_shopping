@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151227192536) do
+ActiveRecord::Schema.define(version: 20151230205625) do
 
   create_table "carts", force: true do |t|
     t.integer  "user_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20151227192536) do
     t.integer  "level"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent"
   end
 
   create_table "categorizations", force: true do |t|

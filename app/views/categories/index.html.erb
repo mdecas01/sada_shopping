@@ -1,0 +1,22 @@
+<%= render 'layouts/flash' %>
+<h1>List of categories</h1>
+<h2>Top level categories(level 1)</h2>
+<% @category_level1.each do |category| %>
+  <p><%= category.name %> | parent category: <%= find_category_name(category.parent) %> |
+    <%= link_to 'Delete category', category_path(category),  
+                            method: :delete, data: { confirm: 'Are you sure you want to delete this category?' } %><p>
+<% end %>  
+<hr>	
+<h2>Categories level 2</h2>
+<% @category_level2.each do |category| %>
+  <p><%= category.name %>| parent category: <%= find_category_name(category.parent) %> |
+  	<%= link_to 'Delete category', category_path(category),  
+                            method: :delete, data: { confirm: 'Are you sure you want to delete this category?' } %><p>
+<% end %>  
+<hr>
+<h2>Categories level 3</h2>
+<% @category_level3.each do |category| %>
+  <p><%= category.name %>| parent category: <%= find_category_name(category.parent) %> |
+  	<%= link_to 'Delete category', category_path(category),  
+                            method: :delete, data: { confirm: 'Are you sure you want to delete this category?' } %><p>
+<% end %>  
