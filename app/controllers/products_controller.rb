@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
         render :new  
       end	
     else
-      flash[:alert] = "Category Problem"
+      flash[:alert] = "The was a problem in one or more chosen categories! Visit manage categories for more information."
       redirect_to products_url
     end    
   end

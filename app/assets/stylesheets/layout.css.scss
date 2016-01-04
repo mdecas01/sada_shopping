@@ -38,16 +38,17 @@ aside#sidebar {
 header#pheader {
   background-color: green;
   padding: 0px 25px;
+  height: 100px;
 
   h1 a {
-    height: 0px;
-    padding-top: 60px;
-    display: block;
+    height: 20px;
+    
+    
     font-family: "Esteban", sans-serif;
     color: #fff;
     text-decoration: none;
-    overflow: hidden;
-    background: image-url("logo.png") no-repeat 0 0;
+    
+    background: image-url("sadalogo.png") no-repeat 0 0;
   }
 
   a.button {

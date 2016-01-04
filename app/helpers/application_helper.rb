@@ -7,7 +7,7 @@ module ApplicationHelper
   def place_rating(review)
     case review.stars
     when 1
-      " "
+      image_tag("one-star.jpg")
     when 2
       image_tag("two-stars.png")  	
     when 3
@@ -17,5 +17,5 @@ module ApplicationHelper
     else
       image_tag("five-star.png")
     end      	  
-  end	
+  end	 
 end

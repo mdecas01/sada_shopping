@@ -34,3 +34,11 @@ Product.create!([
                     quantity: 1
                   }
                 ])	
+
+User.create!([
+                name: "Rodrigo Castro",
+                email: "romacas@hotmail.co.uk",
+                password: "supersecret",
+                password_confirmation: "supersecret",
+                admin: true 
+            ])

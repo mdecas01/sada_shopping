@@ -10,6 +10,11 @@
         <%= f.label :level %>
         <%= f.select :level, Category::LEVEL, prompt: "Choose a level" %>
       </li>  
+      <li>
+        <%= f.label :parent_level %>
+        <%= f.select :level, Category::LEVEL, prompt: "Choose a level" %>
+      </li>
+      <%= link_to 'check categories ids', categories_path %>
     </ol>
     <p>
       <%= f.submit %>
