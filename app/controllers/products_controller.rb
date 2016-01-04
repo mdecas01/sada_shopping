@@ -36,22 +36,26 @@ class ProductsController < ApplicationController
   def create
     
     @product = Product.new(product_attributes)
-
-    if check_categories_relation(params[:category]) #######################HERE##########
-      params[:category].each do |cat| #############################HERE#################
-        @product.categories << Category.find(cat[1])  #######################HERE#####################
-      end                         
-      
-      if @product.save
-        flash[:notice] = "Product successfully created!"
-        redirect_to @product
+      ##NEED REFOCTOR##
+      if params[:category]
+          if check_categories_relation(params[:category]) #######################HERE##########
+            params[:category].each do |cat| #############################HERE#################
+              @product.categories << Category.find(cat[1])  #######################HERE#####################
+            end                         
+            
+            if @product.save
+              flash[:notice] = "Product successfully created!"
+              redirect_to @product
+            else
+              render :new  
+            end	
+          else
+            flash[:alert] = "The was a problem in one or more chosen categories! Visit manage categories for more information."
+            redirect_to products_url
+          end  
       else
-        render :new  
-      end	
-    else
-      flash[:alert] = "The was a problem in one or more chosen categories! Visit manage categories for more information."
-      redirect_to products_url
-    end    
+        redirect_to products_url, alert: "You need to choose categories for the product!"  
+      end      
   end
 
     def destroy

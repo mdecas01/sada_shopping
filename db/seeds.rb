@@ -5,37 +5,37 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-/
-Product.create!([
-	              {
-	                name: "Folding chair",
-                    description: "Easy to store, folding chair",
-                    price: 10.99,
-                    quantity: 1,
-                    image_url: "folding-chair.jpg"
-                  },
-                  {
-                    name: "Coffe table 2",
-                    description: "Strong and easy to assemble",
-                    price: 20.99,
-                    quantity: 1,
-                    image_url: "coffe-table.jpg"
-                  },
-                  {
-                  	name: "Office chair",
-                    description: "Resistent and confortable",
-                    price: 37.89,
-                    quantity: 1
-                    
-                  },
-                  {
-                  	name: "New sofa",
-                    description: "Confortable and stilish ",
-                    price: 129.89,
-                    quantity: 1
-                  }
-                ])	
 
+#Product.create!([
+#	              {
+#	                name: "Folding chair",
+ #                   description: "Easy to store, folding chair",
+#                    price: 10.99,
+#                    quantity: 1,
+#                    image_url: "folding-chair.jpg"
+#                  },
+#                  {
+#                    name: "Coffe table 2",
+#                    description: "Strong and easy to assemble",
+#                    price: 20.99,
+#                    quantity: 1,
+#                    image_url: "coffe-table.jpg"
+#                  },
+#                  {
+#                  	name: "Office chair",
+#                    description: "Resistent and confortable",
+#                    price: 37.89,
+#                    quantity: 1
+#                    
+#                  },
+#                  {
+#                  	name: "New sofa",
+#                    description: "Confortable and stilish ",
+#                    price: 129.89,
+#                    quantity: 1
+#                  }
+#                ])	
+#
 User.create!([
                 name: "Rodrigo Castro",
                 email: "romacas@hotmail.co.uk",
@@ -43,6 +43,6 @@ User.create!([
                 password_confirmation: "supersecret",
                 admin: true 
             ])
-/
+
 
 
