@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+/
 Product.create!([
 	              {
 	                name: "Folding chair",
@@ -42,5 +43,6 @@ User.create!([
                 password_confirmation: "supersecret",
                 admin: true 
             ])
+/
 
 
