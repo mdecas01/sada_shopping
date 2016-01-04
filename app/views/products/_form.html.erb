@@ -28,7 +28,7 @@
       </li> 
       <li>
          <%= f.label :category_2 %>
-         <div id="second"></div>
+         <%= select(:category, :category2_id, Category.where(level: 2), {}, {:onchange => "alert_me_test()"}) %>
       </li>
       <li>
          <%= f.label :category_3 %>

@@ -11,8 +11,8 @@
         <%= f.select :level, Category::LEVEL, prompt: "Choose a level" %>
       </li>  
       <li>
-        <%= f.label :parent_level %>
-        <%= f.select :level, Category::LEVEL, prompt: "Choose a level" %>
+        <%= f.label :parent %>
+        <%= f.select :parent, Category::LEVEL, prompt: "Choose a level" %>
       </li>
       <%= link_to 'check categories ids', categories_path %>
     </ol>

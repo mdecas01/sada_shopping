@@ -8,6 +8,7 @@ class Category < ActiveRecord::Base
 
   LEVEL = [1, 2, 3]
 
+
   def to_s
     self.name
   end	
