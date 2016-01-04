@@ -2,10 +2,12 @@
 <%= render 'layouts/flash' %>
 <div id="productCont"> 
 <article>
-  <p><%= link_to @product.categories.first.name %>  >  
-     <%= link_to @product.categories.second.name %>  >  
-     <%= link_to @product.categories.third.name %>  >  
-     <%= @product.name %>
+  <% if @product.categories %>
+    <p><%= link_to @product.categories.first.name %>  >  
+       <%= link_to @product.categories.second.name %>  >  
+       <%= link_to @product.categories.third.name %>  >  
+       <%= @product.name %>
+  <% end %>     
   <header>
     <h1><%= @product.name %></h1>
   </header>
