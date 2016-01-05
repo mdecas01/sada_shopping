@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    @category.parent = Category.find_by(name: params[:parent])
+    @category.parent = Category.find_by(name: params[:category].values[2]).id
     if @category.save
       redirect_to categories_url, notice: "The new category was added!"
     else

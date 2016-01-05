@@ -38,9 +38,9 @@ class ProductsController < ApplicationController
     @product = Product.new(product_attributes)
       ##NEED REFOCTOR##
       if params[:category]
-          if check_categories_relation(params[:category]) #######################HERE##########
-            params[:category].each do |cat| #############################HERE#################
-              @product.categories << Category.find(cat[1])  #######################HERE#####################
+          if check_categories_relation(params[:category]) 
+            params[:category].each do |cat| 
+              @product.categories << Category.find(cat[1]) 
             end                         
             
             if @product.save

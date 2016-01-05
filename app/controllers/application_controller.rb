@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
     if category_id.nil?
       "None"
     else  
-      Category.find(category_id).name 
+      Category.find(category_id) 
     end  
   end 
 

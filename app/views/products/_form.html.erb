@@ -24,15 +24,15 @@
       </li>
       <li>
          <%= f.label :category_1 %>
-         <%= select(:category, :category1_id, Category.where(level: 1)) %>
+         <%= collection_select(:category, :category1_id, Category.where(level: 1), :id, :name, include_blank: false) %>
       </li> 
       <li>
          <%= f.label :category_2 %>
-         <%= select(:category, :category2_id, Category.where(level: 2), {}, {:onchange => "alert_me_test()"}) %>
+         <%= collection_select(:category, :category2_id, Category.where(level: 2), :id, :name, include_blank: false) %>
       </li>
       <li>
          <%= f.label :category_3 %>
-         <%= select(:category, :category3_id, Category.where(level: 3), {}, {:onchange => "alert_me_test()"}) %>
+         <%= collection_select(:category, :category3_id, Category.where(level: 3), :id, :name, include_blank: false) %>
       </li> 
     </ol>
     <p>
@@ -41,4 +41,4 @@
     </p>
   </fieldset>
 <% end %>
-  
+  return
