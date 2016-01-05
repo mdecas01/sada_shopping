@@ -12,7 +12,7 @@
       </li>  
       <li>
         <%= f.label :parent %>
-        <%= f.select :parent, Category.all, prompt: "Choose a level" %>
+        <%= f.collection_select(:parent, Category.all, :id, :name, allow_blank: true, prompt: " ") %> 
       </li>
       <%= link_to 'check categories ids', categories_path %>
     </ol>

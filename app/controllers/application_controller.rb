@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
   end  
 
   def find_category_name(category_id)
-    if category_id.nil?
+    if category_id == 0
       "None"
     else  
       Category.find(category_id) 

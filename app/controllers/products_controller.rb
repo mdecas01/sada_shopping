@@ -37,7 +37,8 @@ class ProductsController < ApplicationController
     
     @product = Product.new(product_attributes)
       ##NEED REFOCTOR##
-      if params[:category]
+      #chechs if all the categories levels were entered
+      if check_params_complete(params[:category])
           if check_categories_relation(params[:category]) 
             params[:category].each do |cat| 
               @product.categories << Category.find(cat[1]) 
@@ -82,6 +83,11 @@ class ProductsController < ApplicationController
       cat = Category.find(category_ids.values[1])
       cat2 = Category.find(category_ids.values[2])
       cat.parent == category_ids.values[0].to_i && cat2.parent == category_ids.values[1].to_i
+    end  
+    
+    #returns true if the parameter list is complete
+    def check_params_complete(params)
+      params.values[0] && params.values[1] && params.values[2]
     end  
 
 end
