@@ -1,4 +1,5 @@
 <%= form_for(@product) do |f| %>
+  <%= render 'layouts/flash' %>
   <%= render "errors/error_messages", object: @product %>
   <fieldset>
     <ol>

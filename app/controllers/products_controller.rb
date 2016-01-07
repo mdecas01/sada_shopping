@@ -37,26 +37,22 @@ class ProductsController < ApplicationController
     
     @product = Product.new(product_attributes)
       ##NEED REFOCTOR##
-      #chechs if all the categories levels were entered
-      if check_params_complete(params[:category])
-          if check_categories_relation(params[:category]) 
-            params[:category].each do |cat| 
-              @product.categories << Category.find(cat[1]) 
-            end                         
-            
-            if @product.save
-              flash[:notice] = "Product successfully created!"
-              redirect_to @product
-            else
-              render :new  
-            end	
-          else
-            flash[:alert] = "The was a problem in one or more chosen categories! Visit manage categories for more information."
-            redirect_to products_url
-          end  
+
+      if check_categories_relation(params[:category]) 
+        params[:category].each do |cat| 
+          @product.categories << Category.find(cat[1]) 
+        end                         
+        
+        if @product.save
+          flash[:notice] = "Product successfully created!"
+          redirect_to @product
+        else
+          render :new  
+        end	
       else
-        redirect_to products_url, alert: "You need to choose categories for the product!"  
-      end      
+        flash[:alert] = "The was a problem in one or more chosen categories! Visit manage categories for more information."
+        render :new
+      end 
   end
 
     def destroy
@@ -75,19 +71,18 @@ class ProductsController < ApplicationController
     
     #set attributes that can be assigned
     def product_attributes
-      params.require(:product).permit(:id, :name, :description, :price, :quantity, :image_url, :category)
+      params.require(:product).permit(:id, :name, :description, :price, :quantity, :image_url, :category )
     end
     
     #checks if the relation of the child and parent categories is correct
     def check_categories_relation(category_ids) ##################HERE##############
-      cat = Category.find(category_ids.values[1])
-      cat2 = Category.find(category_ids.values[2])
-      cat.parent == category_ids.values[0].to_i && cat2.parent == category_ids.values[1].to_i
-    end  
-    
-    #returns true if the parameter list is complete
-    def check_params_complete(params)
-      params.values[0] && params.values[1] && params.values[2]
+      if category_ids.values[0].to_i == 0 || category_ids.values[1].to_i == 0 || category_ids.values[2].to_i == 0
+        false
+      else
+        cat = Category.find(category_ids.values[1].to_i)
+        cat2 = Category.find(category_ids.values[2].to_i)
+        cat.parent == category_ids.values[0].to_i && cat2.parent == category_ids.values[1].to_i
+      end    
     end  
 
 end
