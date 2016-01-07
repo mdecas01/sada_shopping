@@ -50,8 +50,8 @@ class ProductsController < ApplicationController
           render :new  
         end	
       else
-        flash[:alert] = "The was a problem in one or more chosen categories! Visit manage categories for more information."
-        render :new
+        flash.now[:alert] = "The was a problem in one or more chosen categories! Visit manage categories for more information."
+        render :new 
       end 
   end
 
