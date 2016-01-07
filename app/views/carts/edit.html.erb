@@ -1,0 +1,13 @@
+
+<%= render 'layouts/flash' %>
+<h2>User's cart</h2>
+<p>You have <%= pluralize(check_product_quantities(@cart), 'product')  %> in your shopping cart</p>
+<table>  
+<%= render 'form' %> 
+<tr class="total_value">
+  <td>Total: </td>
+  <td id="tot"><%= @cart.total_price %></td>
+</tr>	
+</table>
+<%= button_to 'Empty cart', cart_path(@cart), method: :delete, data: { confirm: 'Are you sure you want to empty the cart?' }, class: "button empty" %>
+  

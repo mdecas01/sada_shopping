@@ -51,14 +51,4 @@ class ApplicationController < ActionController::Base
     end  
   end  
 
-  def find_category_name(category_id)
-    if category_id == 0
-      "None"
-    else  
-      Category.find(category_id) 
-    end  
-  end 
-
-  helper_method :find_category_name 
-
 end

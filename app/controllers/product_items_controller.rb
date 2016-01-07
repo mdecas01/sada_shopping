@@ -17,21 +17,15 @@ class ProductItemsController < ApplicationController
     product_item = ProductItem.find(params[:product_item_id])
     product = Product.find(product_item.product_id)
     #if user selected a quantity higher than the stock the order will not be updated
-    if params[:quantity].to_i <= product.quantity + product_item.quantity
-      #returns the product amount from the cart to the catalogue
-      #product.quantity += product_item.quantity
+    if params[:quantity].to_i <= product.quantity 
       product.save
       #increases quantity in the cart
       product_item.update(quantity: params[:quantity])
-      #decreases quantity in the catalogue
-      #params[:quantity].to_i.times do 
-       # product.quantity -= 1
-       # product.save
-      #end  
-      redirect_to cart_url(product_item.cart_id)
+      redirect_to edit_cart_url(product_item.cart_id), notice: "Product quantity successfully updated!"
     else
       #product_item.update(:quantity 0)
-      redirect_to cart_url(product_item.cart), alert: "The quantity selected exceeds the stock quantity" 
+      #redirect_to cart_url(product_item.cart), alert: "The quantity selected exceeds the stock quantity" 
+      redirect_to edit_cart_url(product_item.cart_id), alert: "The quantity selected exceeds the stock quantity"
     end   
   end  
 

@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-	before_action :set_products, except: [:index, :new, :create]
+	before_action :set_product, except: [:index, :new, :create]
   #creates a cart if one not exists yet
   before_action :create_cart
 
@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_attributes)
-      flash.notice = "Product seccessfully updated!"
+      flash[:notice] = "Product seccessfully updated!"
       redirect_to @product
     else
       render :edit
@@ -36,7 +36,6 @@ class ProductsController < ApplicationController
   def create
     
     @product = Product.new(product_attributes)
-      ##NEED REFOCTOR##
 
       if check_categories_relation(params[:category]) 
         params[:category].each do |cat| 
@@ -65,7 +64,7 @@ class ProductsController < ApplicationController
     private
     
     #sets the products attributes according to the passed parameters
-    def set_products
+    def set_product
       @product = Product.find(params[:id])
     end	
     
@@ -84,5 +83,14 @@ class ProductsController < ApplicationController
         cat.parent == category_ids.values[0].to_i && cat2.parent == category_ids.values[1].to_i
       end    
     end  
+    
+  def find_category_name(category_id)
+    if category_id == 0
+      "None"
+    else  
+      Category.find(category_id) 
+    end  
+  end 
 
+  helper_method :find_category_name 
 end
