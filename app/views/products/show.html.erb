@@ -1,7 +1,7 @@
 
 <%= render 'layouts/flash' %>
-<div id="productCont"> 
-<article>
+ 
+<article class="product">
   <% if @product.categories %>
     <p><%= link_to @product.categories.first.name %>  >  
        <%= link_to @product.categories.second.name %>  >  
@@ -24,7 +24,6 @@
     <%= link_to pluralize(@product.reviews.size, 'Review'), product_reviews_url(@product), class: 'button' %>
     <%= link_to 'Write review', new_product_review_path(@product) %>
   </p>  
-</article>
 <% if admin_user? %>
   <div id="prod_links">
     <%= link_to "Edit product", edit_product_path(@product) %> |
@@ -36,4 +35,4 @@
     <div id="btn"><%= display_add_button(@product) %></div> 
     <div id="retbtn"><%= link_to 'Return', products_path, class: 'button' %></div>
   </p>
-</div>
+</article>

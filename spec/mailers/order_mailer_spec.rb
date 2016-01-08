@@ -1,8 +1,18 @@
 require "spec_helper"
 
-describe OrderMailer do
+describe OrderMailer do 
+
+  before(:each) do
+    @user = User.create!(user_details)
+  end  
+
+  after(:each) do
+    @user.delete
+  end  
+
   describe "received" do
-    order = Order.new(email: "romacas@hotmail.co.uk")
+    order = Order.create!(order_details)
+    order.user = @user
     let(:mail) { OrderMailer.received(order) }
 
     it "renders the headers" do
@@ -17,7 +27,8 @@ describe OrderMailer do
   end
 
   describe "dispatched" do
-    order = Order.new(email: "romacas@hotmail.co.uk")
+    order = Order.create!(order_details)
+    order.user = @user
     let(:mail) { OrderMailer.dispatched(order) }
 
     it "renders the headers" do
