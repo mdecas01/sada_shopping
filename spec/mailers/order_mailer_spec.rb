@@ -1,14 +1,6 @@
 require "spec_helper"
 
-describe OrderMailer do 
-
-  before(:each) do
-    @user = User.create!(user_details)
-  end  
-
-  after(:each) do
-    @user.delete
-  end  
+describe OrderMailer do  
 
   describe "received" do
     order = Order.create!(order_details)
