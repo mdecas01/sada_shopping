@@ -35,4 +35,10 @@ class CategoriesController < ApplicationController
   def category_params
       params.require(:category).permit(:name, :level, :parent)
    end
+
+   def find_parent_name(parent)
+     Category.find(parent.to_i)
+   end 
+
+   helper_method :find_parent_name
 end

@@ -2,20 +2,20 @@
 <h1>List of categories</h1>
 <h2>Top level categories(level 1)</h2>
 <% @category_level1.each do |categoryl1| %>
-  <p><%= categoryl1.name %> | parent category: None |
+  <p><b>Category ID:</b> <%= categoryl1.id %> | <b>Category Name:</b> <%= categoryl1.name %> | <b>parent category:</b> None |
     <%= link_to 'Delete category', category_path(categoryl1), method: :delete, data: { confirm: 'Are you sure you want to delete this category?' } %><p>
 <% end %>  
 <hr>	
-<h2>Categories level 2</h2>
+<h2>Categories Level 2</h2>
 <% @category_level2.each do |categoryl2| %>
-  <p><%= categoryl2.name %>| parent category: <%= find_category_name(categoryl2.parent) %> |
-  	<%= link_to 'Delete category', category_path(categoryl2),  
-                            method: :delete, data: { confirm: 'Are you sure you want to delete this category?' } %><p>
+  <p><b>Category ID:</b> <%= categoryl2.id %> | <b>Category Name:</b> <%= categoryl2.name %> | <b>parent category:</b> 
+  	<%= find_parent_name(categoryl2.parent) %> |
+    <%= link_to 'Delete category', category_path(categoryl2), method: :delete, data: { confirm: 'Are you sure you want to delete this category?' } %><p>
 <% end %>  
 <hr>
-<h2>Categories level 3</h2>
+<h2>Categories Level 3</h2>
 <% @category_level3.each do |categoryl3| %>
-  <p><%= categoryl3.name %>| parent category: <%= find_category_name(categoryl3.parent) %> |
-  	<%= link_to 'Delete category', category_path(categoryl3),  
-                            method: :delete, data: { confirm: 'Are you sure you want to delete this category?' } %><p>
+  <p><b>Category ID:</b> <%= categoryl3.id %> | <b>Category Name:</b> <%= categoryl3.name %> | <b>parent category:</b>  
+  	<%= find_parent_name(categoryl3.parent) %> |
+    <%= link_to 'Delete category', category_path(categoryl3), method: :delete, data: { confirm: 'Are you sure you want to delete this category?' } %><p>
 <% end %> 

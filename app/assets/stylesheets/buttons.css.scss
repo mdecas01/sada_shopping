@@ -2,13 +2,13 @@
 
 .button {
   display: inline-block;
-  border: 1px $blue-color solid;
+  border: 1px $button-color solid;
   border-radius: 4px;
   padding: 4px 6px;
   text-decoration: none;
-  background-color: #0066FF;
+  
   margin: 5px;
-  color: #FFF;
+  
 
   &.empty {
 

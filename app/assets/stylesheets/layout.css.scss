@@ -22,7 +22,8 @@ div#main {
           position: relative;
           margin-left: auto;
           margin-right: auto;
-          border-bottom: 1px #000 solid;
+          padding-bottom: 20px;
+          
       } 
     }
   }
@@ -36,13 +37,13 @@ aside#sidebar {
   padding-top: 20px;
 
   a.button {
-    border-color: $blue-color;
     width: 130px;
     text-align: center;
+    
     &:hover {
-      background-color: #000;
-      color: #fff;
-      border-color: $blue-color;
+      background-color: #e0e0d1;
+      color: #000000;
+      border-color: $button-color;
       text-decoration: none;
     }
     }
@@ -66,11 +67,11 @@ header#pheader {
 
   a.button {
     margin-left: 10px;
-    border-color: $blue-color;
+    border-color: $button-color;
     &:hover {
       background-color: #000;
       color: #fff;
-      border-color: $blue-color;
+      border-color: $button-color;
       text-decoration: none;
     }
   }
@@ -110,7 +111,7 @@ footer#p-footer {
   padding: 5px; 
   color: $grey-color; 
   background: $green-color;
-  border-top: 5px solid darken($blue-color, 5%);
+  border-top: 5px solid darken($button-color, 5%);
 
   p {
     text-align: center;
@@ -228,23 +229,6 @@ div#cart {
 #cart-buttons {
   margin-top: 5px;
 }
-
-
-.clearfix:after {
-    content: "."; 
-    display: block; 
-    height: 0; 
-    clear: both; 
-    visibility: hidden;
-}
-
-.clearfix {display: inline-block;}
-
-/* Hides from IE-mac \*/
-* html .clearfix {height: 1%;}
-.clearfix {display: block;}
-/* End hide from IE-mac */
-/* @end */
 
 
 #user-cart {
