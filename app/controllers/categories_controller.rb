@@ -26,8 +26,7 @@ class CategoriesController < ApplicationController
   end	
 
   def destroy
-    @category = Category.find(params[:id])
-    @category.delete
+    destroy_category_and_children(params[:id])
     flash[:alert] = "Category successfully deleted!"
     redirect_to categories_url
   end	
@@ -41,4 +40,26 @@ class CategoriesController < ApplicationController
    end 
 
    helper_method :find_parent_name
+   
+   #returns the category at level 2 related to the parent category
+   def find_first_child(categoryl1) 
+     Category.find_by(parent: categoryl1.id)
+   end
+
+   helper_method :find_first_child
+
+   def find_second_child(categoryl1)
+     Category.find_by(parent: Category.find_by(parent: categoryl1.id))
+   end 
+
+   helper_method :find_second_child
+
+   def destroy_category_and_children(category_id)
+    child_1 = Category.find_by(parent: category_id)
+    child_2 = Category.find_by(parent: Category.find_by(parent: category_id))
+    @category = Category.find(category_id)
+    child_2.delete unless child_2.nil?
+    child_1.delete unless child_1.nil?
+    @category.delete
+   end 
 end
