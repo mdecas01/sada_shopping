@@ -88,5 +88,6 @@ Rails.application.configure do
     password: ENV["GMAIL_PASSWORD"]
   }
 
-  config.action_mailer.default_url_options = { host: "frozen-waters-8200.herokuapp.com"}
+  config.action_mailer.default_url_options = { host: "localhost:3000"}
+
 end
