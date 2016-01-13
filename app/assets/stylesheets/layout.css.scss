@@ -52,16 +52,15 @@ aside#sidebar {
 header#pheader {
   background-color: $green-color;
   padding: 0px 25px;
-  height: 100px;
 
   h1 a {
-    height: 20px;
-    
-    
+    height: 50px;
+    padding: 10px;
+    display: block;
     font-family: "Esteban", sans-serif;
-    color: #fff;
+    color: #000;
     text-decoration: none;
-    
+    overflow: hidden;
     background: image-url("sadalogo.png") no-repeat 0 0;
   }
 
