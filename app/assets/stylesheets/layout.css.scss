@@ -55,13 +55,13 @@ header#pheader {
 
   h1 a {
     height: 50px;
-    padding: 10px;
+    padding: 20px;
     display: block;
     font-family: "Esteban", sans-serif;
     color: #000;
     text-decoration: none;
     overflow: hidden;
-    background: image-url("sadalogo.png") no-repeat 0 0;
+    background: image-url("sadalogo.png") no-repeat 10px 10px;
   }
 
   a.button {

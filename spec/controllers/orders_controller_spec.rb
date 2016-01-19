@@ -3,16 +3,16 @@ require 'spec_helper'
 describe OrdersController do
 
   before do
-    @order = Order.create!(order_details)
-  end
+      @user = User.create!(user_details)
+      @order = Order.create!(order_details)
+    end 
 
   context "if a user is not an admin" do
-
+    
     before do
-      user = User.create!(user_details(admin: false))
-      session[:user_id] = user
+      session[:user_id] = @user
     end
-
+      
     it "he/she cannot access the edit action" do
       get :edit, id: @order
 

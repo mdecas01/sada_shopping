@@ -25,15 +25,15 @@
       </li>
       <li>
          <%= f.label :category_1 %>
-         <%= collection_select(:category, :category1_id, Category.where(level: 1), :id, :name, prompt: "select one" ) %>
+         <%= collection_select(:category, :category1_id, Category.where(level: 1), :id, :name, selected: @product.categories.first.name ) %>
       </li> 
       <li>
          <%= f.label :category_2 %>
-         <%= collection_select(:category, :category2_id, Category.where(level: 2), :id, :name, prompt: "select one") %>
+         <%= collection_select(:category, :category2_id, Category.where(level: 2), :id, :name, selected: @product.categories.second.name) %>
       </li>
       <li>
          <%= f.label :category_3 %>
-         <%= collection_select(:category, :category3_id, Category.where(level: 3), :id, :name, prompt: "select one") %>
+         <%= collection_select(:category, :category3_id, Category.where(level: 3), :id, :name, selected: @product.categories.third.name) %>
       </li> 
     </ol>
     <p>

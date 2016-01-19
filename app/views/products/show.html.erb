@@ -2,7 +2,7 @@
 <%= render 'layouts/flash' %>
  
 <article class="product">
-  <% if @product.categories %>
+  <% if !@product.categories.empty? %>
     <p><%= link_to @product.categories.first.name %>  >  
        <%= link_to @product.categories.second.name %>  >  
        <%= link_to @product.categories.third.name %>  >  

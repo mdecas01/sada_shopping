@@ -5,21 +5,25 @@
 	  	<li>
 	      <%= link_to "Products", products_path, class: 'button' %>
 	    </li> 
-	    <li>
-	      <%= link_to "Add new product", new_product_path(@product), class: 'button' %>
-	    </li> 
+	    <% if admin_user? %>
+		    <li>
+		      <%= link_to "Add new product", new_product_path(@product), class: 'button' %>
+		    </li> 
+		<% end %>    
 	    <li>
 	      <%= link_to "Orders", orders_url, class: 'button' %>
 	    </li>
 	    <li>
           <%= link_to "Users", users_path, class: 'button' %>
-	    </li>  
-	    <li>
-          <%= link_to "Add new category", new_category_path, class: 'button' %>
 	    </li> 
-	    <li>
-          <%= link_to "Manage categories", categories_path, class: 'button' %>
-	    </li> 
+	    <% if admin_user? %> 
+		    <li>
+	          <%= link_to "Add new category", new_category_path, class: 'button' %>
+		    </li> 
+		    <li>
+	          <%= link_to "Manage categories", categories_path, class: 'button' %>
+		    </li> 
+		<% end %>    
 	  </ol>  
 	</nav>
   </aside>

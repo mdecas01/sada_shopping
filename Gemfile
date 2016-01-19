@@ -53,7 +53,7 @@ end
 
 group :test do
   gem "capybara", "2.1.0"
-  gem 'factory_girl_rails'
+  #gem 'factory_girl_rails'
 end
 
 group :production do

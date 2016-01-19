@@ -2,13 +2,10 @@ require 'spec_helper'
 
 describe ProductsController do
 
-  before do
-    @product = Product.create!(product_details)
-  end
-
   context "if a user is not an admin" do
 
     before do
+      @product = Product.create!(product_details)
       user = User.create!(user_details(admin: false))
       session[:user_id] = user
     end

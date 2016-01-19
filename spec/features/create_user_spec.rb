@@ -12,8 +12,9 @@ describe "Creating a user" do
     fill_in "Confirm Password", with: "password"
 
     click_button 'Create account'
+    user = User.find_by(name: "User number 1")
 
-    expect(current_path).to eq(user_path(User.find_by(name: "User number 1")))
+    expect(current_path).to eq(user_path(user))
 
     expect(page).to have_text('User number 1')
     expect(page).to have_text('Thanks for signing up!')

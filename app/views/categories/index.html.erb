@@ -23,6 +23,6 @@
 <h2>List of allowed category association</h2>
 <p>Every product category association must respect a predifined order of categories.
     This means that when adding a new product to the catalogue the sequence of category levels must match one of the list bellow</p>
-<% @category_level1.each do |categoryl1| %>
-  <p><%= categoryl1.name %> >  <%= find_first_child(categoryl1)%> > <%= find_second_child(categoryl1) %></p>
+<% @category_level3.each do |categoryl3| %>
+  <p> <%= find_first_parent(categoryl3)%> > <%= find_second_parent(categoryl3) %> > <%= categoryl3.name %></p>
 <% end %> 

@@ -21,9 +21,18 @@ class ProductsController < ApplicationController
   end	
 
   def update
-    if @product.update(product_attributes)
-      flash[:notice] = "Product seccessfully updated!"
-      redirect_to @product
+    if @product.update(product_attributes)  ############
+      if check_categories_relation(params[:category])
+          @product.categories.delete_all
+            params[:category].each do |cat| 
+              @product.categories << Category.find(cat[1]) 
+            end 
+          flash[:notice] = "Product seccessfully updated!"
+          redirect_to @product
+      else
+        flash.now[:alert] = "Ther was a problem with one or more categories. Please check...for more"  
+        render :edit
+      end   
     else
       render :edit
     end  
@@ -34,10 +43,9 @@ class ProductsController < ApplicationController
   end
 
   def create
-    
     @product = Product.new(product_attributes)
 
-      if check_categories_relation(params[:category]) 
+      if check_categories_relation(params[:category]) #############
         params[:category].each do |cat| 
           @product.categories << Category.find(cat[1]) 
         end                         

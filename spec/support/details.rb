@@ -31,5 +31,3 @@ def review_details(overrides = {})
     comment: "Excelent product!"
   }.merge(overrides)
 end
-
-

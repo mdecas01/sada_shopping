@@ -41,18 +41,19 @@ class CategoriesController < ApplicationController
 
    helper_method :find_parent_name
    
-   #returns the category at level 2 related to the parent category
-   def find_first_child(categoryl1) 
-     Category.find_by(parent: categoryl1.id)
+   #returns the category in level 2 that is parent of the given category
+   def find_second_parent(categoryl3) 
+     Category.find(categoryl3.parent)
    end
 
-   helper_method :find_first_child
-
-   def find_second_child(categoryl1)
-     Category.find_by(parent: Category.find_by(parent: categoryl1.id))
+   helper_method :find_first_parent
+   
+   #returns the category in the top level that is parent of the parent of the given category
+   def find_first_parent(categoryl3)
+     Category.find(Category.find(categoryl3.parent))
    end 
 
-   helper_method :find_second_child
+   helper_method :find_second_parent
 
    def destroy_category_and_children(category_id)
     child_1 = Category.find_by(parent: category_id)
