@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
   before_action :allow_admin_user, except: [:index, :show]
 
 	def index
-      @products = Product.all.page(params[:page]).per_page(10)
+    @products = Product.search(params[:search]) 
 	end	
 
 	def show
@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_attributes)
 
-      if check_categories_relation(params[:category]) #############
+      if check_categories_relation(params[:category]) 
         params[:category].each do |cat| 
           @product.categories << Category.find(cat[1]) 
         end                         
@@ -82,12 +82,14 @@ class ProductsController < ApplicationController
     end
     
     #checks if the relation of the child and parent categories is correct
-    def check_categories_relation(category_ids) ##################HERE##############
+    def check_categories_relation(category_ids) 
+      #all the three category levels must be present
       if category_ids.values[0].to_i == 0 || category_ids.values[1].to_i == 0 || category_ids.values[2].to_i == 0
         false
       else
         cat = Category.find(category_ids.values[1].to_i)
         cat2 = Category.find(category_ids.values[2].to_i)
+        
         cat.parent == category_ids.values[0].to_i && cat2.parent == category_ids.values[1].to_i
       end    
     end  

@@ -4,17 +4,17 @@ describe "Viewing the list of products" do
   
   it "shows the products" do
 
-  product1 = Product.create(name: "Folding chair",
+  product1 = Product.create!(name: "Folding chair",
                             description: "Easy to store, folding chair",
                             price: 10.99,
                             quantity: 1)	
 
-  product2 = Product.create(name: "Coffe table",
+  product2 = Product.create!(name: "Coffe table",
                             description: "Strong and easy to assemble ",
                             price: 20.99,
                             quantity: 1)
 
-  product3 = Product.create(name: "Lenew laptop",
+  product3 = Product.create!(name: "Lenew laptop",
                             description: "Perfect for work and gaming",
                             price: 499.99,
                             quantity: 0)
@@ -31,7 +31,7 @@ describe "Viewing the list of products" do
   end
   
   it "shows the Add New Product, Add New Category and Manage Categories only if user is admin" do
-    user = build(:user)
+    user = User.create!(user_details(admin: true))
     sign_in_user(user)
 
     visit products_url

@@ -21,6 +21,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    @cart = Cart.find(session[:id])
+    @cart.destroy
+      
     session[:user_id] = nil
     redirect_to products_path, notice: "You are signed out!"
   end	

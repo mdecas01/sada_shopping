@@ -1,34 +1,47 @@
- 
 <%= render 'layouts/flash' %>
-<% @products.each do |product| %>
-    <article class="product">
-      <header>
-        <h2><%= link_to product.name, product %></h2>
-      </header>
-      <%= place_image(product) %>
-      <table>
-        <tr>
-          <p>
-            Description: <%= truncate(product.description, length: 10) %>
-          </p>
-        </tr>
-        <tr>
-          <p>
-           Price: <%= format_price(product) %>
-          </p>
-        </tr>
-        <tr>
-          <p>
-           Quantity available: <%= product_availability(product) %>
-          </p>
-        </tr>
-        <tr>
-          <p id="new_prod">
-           <%= new_product(product) %>
-          </p>
-        </tr>
-      </table>
-    </article>  
+
+<%= form_tag products_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil , class: 'button' %>
+  </p>
 <% end %>
-<%= will_paginate @products %>
+
+<% if @products.empty? %>
+  <p>No products found!</p>
+<% else %>  
+  <% @products.each do |product| %>
+      <article class="product">
+        <header>
+          <h2><%= link_to product.name, product %></h2>
+        </header>
+        <%= place_image(product) %>
+        <table>
+          <tr>
+            <p>
+              Description: <%= truncate(product.description, length: 10) %>
+            </p>
+          </tr>
+          <tr>
+            <p>
+             Price: <%= format_price(product) %>
+            </p>
+          </tr>
+          <tr>
+            <p>
+             Quantity available: <%= product_availability(product) %>
+            </p>
+          </tr>
+          <tr>
+            <p id="new_prod">
+             <%= new_product(product) %>
+            </p>
+          </tr>
+        </table>
+      </article>  
+  <% end %>
+<% end %>  
+<% if @products.size > 5 %>
+  <%= will_paginate @products %>
+<% end %>  
 

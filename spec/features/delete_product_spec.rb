@@ -3,8 +3,9 @@ require 'spec_helper'
 describe "Deleting a product" do 
 	
   it "removes the product from the database" do 
-    product = create(:product)
-    user_admin = create(:user)
+    product = Product.create!(product_details)
+    user_admin = User.create!(user_details(admin: true))
+
     sign_in_user(user_admin)
 
     visit product_url(product)

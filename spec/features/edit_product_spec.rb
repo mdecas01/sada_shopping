@@ -8,11 +8,17 @@ describe "Editing a product details" do
   end
 
   it "fills the forms with the products details" do
-    product = Product.create(product_details)
+    product = Product.create!(product_details)
+    category_level_1 = Category.create!(category1_details)
+    category_level_2 = Category.create!(category2_details)
+    category_level_3 = Category.create!(category3_details)
+    product.categories << category_level_1 
+    product.categories << category_level_2
+    product.categories << category_level_3
 
     visit product_url(product)
 
-    click_link "Edit"
+    click_link "Edit product"
 
       expect(current_path).to eq(edit_product_path(product))
       expect(find_field('Name').value).to eq(product.name)
@@ -29,7 +35,13 @@ describe "Editing a product details" do
    end	
 
    it "does not update the product if any of its fields is invalid" do
-     product = Product.create(product_details)
+    product = Product.create!(product_details)
+    category_level_1 = Category.create!(category1_details)
+    category_level_2 = Category.create!(category2_details)
+    category_level_3 = Category.create!(category3_details)
+    product.categories << category_level_1 
+    product.categories << category_level_2
+    product.categories << category_level_3
   
      visit edit_product_url(product)
   

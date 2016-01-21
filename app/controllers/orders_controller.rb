@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
       @orders = Order.all.page(params[:page]).per_page(3)
     else 
       #gets the orders for the specific user
-      @orders = Order.where(:user => logged_user.name) 
+      @orders = Order.where(:user_id => logged_user) 
     end  
   end 
    

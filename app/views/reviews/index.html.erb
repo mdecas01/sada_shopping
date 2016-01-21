@@ -2,7 +2,7 @@
 <h1>Review for <%= link_to @product.name, product_path(@product) %></h1>
 <h2>The product has <%= pluralize(@reviews.size, 'review') %></h2>
 <ol>
-  <% @reviews.each do |review| %>
+  <% @product.reviews.each do |review| %>
     <li>
       <p>
         Review by: <%= link_to review.user.name, user_url(review.user) %> on <%= review.created_at.to_date %>
