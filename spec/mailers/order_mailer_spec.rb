@@ -2,14 +2,18 @@ require "spec_helper"
 
 describe OrderMailer do  
 
+  before do
+    user = User.create!(user_details)
+  end  
+
   describe "received" do
     order = Order.create!(order_details)
-    order.user = @user
+    order.user = user
     let(:mail) { OrderMailer.received(order) }
 
     it "renders the headers" do
       mail.subject.should eq("Order confirmation")
-      mail.to.should eq(["romacas@hotmail.co.uk"])
+      mail.to.should eq([user.email])
       mail.from.should eq(["admin@sadashopping.com"])
     end
 
@@ -20,12 +24,12 @@ describe OrderMailer do
 
   describe "dispatched" do
     order = Order.create!(order_details)
-    order.user = @user
+    order.user = user
     let(:mail) { OrderMailer.dispatched(order) }
 
     it "renders the headers" do
       mail.subject.should eq("Order dispatched")
-      mail.to.should eq(["romacas@hotmail.co.uk"])
+      mail.to.should eq([user.eamil])
       mail.from.should eq(["admin@sadashopping.com"])
     end
 

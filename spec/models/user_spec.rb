@@ -111,4 +111,16 @@ describe "The user" do
 
     expect(returned_user).not_to eq(user)
   end
+
+  it "has wished products" do
+  user = User.new(user_attributes)
+  product1 = Product.new(product_attributes(title: "Folding Chair 4"))
+  product2 = Product.new(product_attributes(title: "Folding Chair 5"))
+
+  user.whishlists.new(product: product1)
+  user.whishlists.new(product: product2)
+
+  expect(user.whishlists).to include(product1)
+  expect(user.whishlists).to include(product2)
+end
 end

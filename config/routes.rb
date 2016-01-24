@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :wishlists
+
+  resources :wish_lists
+
   resources :categories
 
   root 'products#index'

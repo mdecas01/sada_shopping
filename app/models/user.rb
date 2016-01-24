@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :orders, dependent: :destroy
   has_many :carts, dependent: :destroy
   has_many :reviews
+  has_many :wishlists, dependent: :destroy
+  has_many :wished_products, through: :wishlists, source: :product
 
   validates :name, presence: true
   validates :email, presence: true, format: /\A\S+@\S+\z/, uniqueness: { case_sensitive: false }

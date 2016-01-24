@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151230205625) do
+ActiveRecord::Schema.define(version: 20160124223136) do
 
   create_table "carts", force: true do |t|
     t.integer  "user_id"
@@ -91,5 +91,15 @@ ActiveRecord::Schema.define(version: 20151230205625) do
     t.datetime "updated_at"
     t.boolean  "admin",           default: false
   end
+
+  create_table "wishlists", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "wishlists", ["product_id"], name: "index_wishlists_on_product_id"
+  add_index "wishlists", ["user_id"], name: "index_wishlists_on_user_id"
 
 end

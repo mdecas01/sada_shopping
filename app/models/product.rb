@@ -14,7 +14,8 @@ class Product < ActiveRecord::Base
     has_many :reviews, dependent: :destroy
     has_many :categorization, dependent: :destroy
     has_many :categories, through: :categorization
-
+    has_many :wishlists, dependent: :destroy
+    has_many :customers, through: :wishlists, source: :user
     
     #checks if the product is related to any cart
     before_destroy :check_product_lines
@@ -30,14 +31,14 @@ class Product < ActiveRecord::Base
 
   private
 
-  def check_product_lines
-    if product_lines.empty?
-      true
-    else
-      errors.add(:base, 'A shopping cart has this product')
-      false
-    end
-  end  
+  #def check_product_lines
+   # if product_lines.empty?
+    #  true
+   # else
+     # errors.add(:base, 'A shopping cart has this product')
+     # false
+   # end
+  #end  
 
  def self.search(search)
    if search

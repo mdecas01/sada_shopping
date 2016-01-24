@@ -3,28 +3,16 @@ require 'spec_helper'
 describe "A product" do
 
   it "is new if the created_at is less the the current time" do
-    product = Product.create(product_details)
+    product = Product.create!(product_details)
 
     expect(product.new?).to eq(true)
   end
 
   it "is not available if its quantity is equals to 0" do 
-    product = Product.create(name: "Folding chair",
-                             description: "Resistent and confortable",
-                             price: 20.99,
-                             quantity: 0 )
+    product = Product.create!(product_details(quantity: 0))
 
     expect(product.available?).to eq(false)
   end	
-
-  it "is not available if its quantity is nil" do 
-    product = Product.create(name: "Folding chair",
-                             description: "Resistent and confortable",
-                             price: 20.99,
-                             quantity: nil )
-
-    expect(product.available?).to eq(false)
-  end
 
   it "is saved only if the name, description and price fields are not blank" do
     product = Product.new
@@ -103,13 +91,15 @@ describe "A product" do
     expect(product.reviews).to include(review2)
   end
 
-it "deletes associated reviews" do
-  product = Product.create(product_attributes)
+  it "is wished by users"
+    product = Product.new(product_attributes)
+    user1 = User.new(user_attributes(email: "user123@example.com"))
+    user2 = User.new(user_attributes(email: "user321@example.com"))
 
-  product.reviews.create(review_details)
+    product.wishlistss.new(user: user1)
+    product.wishlistss.new(user: user2)
 
-  expect {
-    product.destroy
-  }.to change(Review, :count).by(-1)
-end
+    expect(product.users).to include(user1)
+    expect(product.users).to include(user2)
+  end
 end
