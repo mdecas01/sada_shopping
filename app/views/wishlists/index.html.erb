@@ -1,0 +1,4 @@
+<h1><%= @user.name %>'s wishlist</h1>
+<% @wishlists.each do |list| %>
+	<li><%= list.product.name %></li>
+<% end %>	

@@ -38,7 +38,7 @@
 	          <%= link_to "My orders", orders_url, class: 'button' %>
 	        </li>  
 	        <li>
-	          <%= link_to "My wishlist", class: 'button' %>
+	          <%= link_to "My wishlist", user_wishlists_path(logged_user), class: 'button' %>
 	        </li> 
 		<% end %>       
 	  </ol>  

@@ -15,6 +15,11 @@ class ProductsController < ApplicationController
 	end	
 
 	def show
+    @customers = @product.customers
+
+    if logged_user
+      @user_wishlist = logged_user.wishlists.find_by(product_id: @product.id)
+    end  
   end	
 
   def edit  

@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :wishlists
-
-  resources :wish_lists
 
   resources :categories
 
@@ -11,13 +8,15 @@ Rails.application.routes.draw do
 
   get 'signin' => 'sessions#new'
   get 'signup' => 'users#new'
-  resources :users
-
+  resources :users do           
+    resources :wishlists       ####################
+  end
   resources :orders
   resources :product_items
   resources :carts	
   resources :products do
     resources :reviews
+    resources :wishlists       
   end  
 
 end
