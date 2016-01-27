@@ -1,0 +1,4 @@
+<h1>List of products</h1>
+<% @wishlist.each do |list| %>
+  <li><%= link_to list.product.name, product_url(list.product) %></h1>
+<% end %>

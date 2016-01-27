@@ -1,8 +1,16 @@
-<% if @user %>
-  <h1><%= @user.name %>'s wishlist</h1>
-<% else %>
+
+  <%= form_tag wishlists_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search], placeholder: 'Enter a user name to find their wishlist',  class: 'boxfield' %>
+      <%= submit_tag "Search", :name => nil , class: 'button' %>
+    </p>
+  <% end %>
   <h1>List of wishlists</h1>
-<% end %>
-  <% @wishlists.each do |list| %>
-	  <li><%= list.product.name %></li>
-  <% end %>	
+  <% if @wishlists %>
+    <% @wishlists.group(:user_id).each do |list| %>
+      <li><%= link_to list.user.name, user_wishlist_path(list.user, list) %></li>
+    <% end %>
+  <% else %>
+    <h2>Enter a user name</h2>
+  <% end %>    
+	

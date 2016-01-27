@@ -1,13 +1,19 @@
 class WishlistsController < ApplicationController
-    before_action :request_signin_first
 
 	def index
 	  if params[:user_id]
 	    @user = User.find(logged_user)
         @wishlists = Wishlist.where(user: @user)
+      elsif params[:search]
+      	@user = User.search(params[:search]).first
+      	@wishlists = Wishlist.where(user_id: @user.id)
       else
         @wishlists = Wishlist.all
       end 
+	end	
+
+	def show
+      @wishlist = Wishlist.where(user: params[:user_id])
 	end	
 
 	def create
