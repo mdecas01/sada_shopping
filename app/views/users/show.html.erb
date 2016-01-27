@@ -3,7 +3,7 @@
   <h1><%= @user.name %></h1>
   <h3><%= mail_to @user.email %></h3>
   <p>User since: <%= time_ago_in_words(@user.created_at) %></p>
-  <% if logged_user?(@user) %>
+  <% if logged_user?(@user) || admin_user? %>
     <%= link_to 'Edit account', edit_user_path(@user), class: 'button' %> 
     <%= link_to 'Delete account', user_path(@user), 
                                   method: :delete, 

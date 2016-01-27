@@ -2,8 +2,12 @@ class WishlistsController < ApplicationController
     before_action :request_signin_first
 
 	def index
-	  @user = User.find(logged_user)
-      @wishlists = Wishlist.where(user: @user)
+	  if params[:user_id]
+	    @user = User.find(logged_user)
+        @wishlists = Wishlist.where(user: @user)
+      else
+        @wishlists = Wishlist.all
+      end 
 	end	
 
 	def create

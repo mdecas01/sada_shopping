@@ -1,4 +1,8 @@
-<h1><%= @user.name %>'s wishlist</h1>
-<% @wishlists.each do |list| %>
-	<li><%= list.product.name %></li>
-<% end %>	
+<% if @user %>
+  <h1><%= @user.name %>'s wishlist</h1>
+<% else %>
+  <h1>List of wishlists</h1>
+<% end %>
+  <% @wishlists.each do |list| %>
+	  <li><%= list.product.name %></li>
+  <% end %>	
