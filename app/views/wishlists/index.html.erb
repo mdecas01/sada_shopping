@@ -4,13 +4,15 @@
       <%= text_field_tag :search, params[:search], placeholder: 'Enter a user name to find their wishlist',  class: 'boxfield' %>
       <%= submit_tag "Search", :name => nil , class: 'button' %>
     </p>
-  <% end %>
-  <h1>List of wishlists</h1>
-  <% if @wishlists %>
-    <% @wishlists.group(:user_id).each do |list| %>
-      <li><%= link_to list.user.name, user_wishlist_path(list.user, list) %></li>
-    <% end %>
-  <% else %>
-    <h2>Enter a user name</h2>
   <% end %>    
 	
+  <% if @users %>
+    <h1>List of wishlists</h1>
+    <% @users.each do |user| %>
+      <% if user.wishlists %>
+        <li><%= link_to user.name, user_wishlist_path(user, user.wishlists) %></li>
+      <% end %>
+    <% end %>  
+  <% else %>
+    <h2>Enter a user name in the searchbox to find users wishlists</h2> 
+  <% end %>

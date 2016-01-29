@@ -1,12 +1,8 @@
 class WishlistsController < ApplicationController
 
 	def index
-	  if params[:user_id]
-	    @user = User.find(logged_user)
-        @wishlists = Wishlist.where(user: @user)
-      elsif params[:search]
-      	@user = User.search(params[:search]).first
-      	@wishlists = Wishlist.where(user_id: @user.id)
+	  if params[:search]
+      	@users = User.search(params[:search])
       else
         @wishlists = Wishlist.all
       end 
