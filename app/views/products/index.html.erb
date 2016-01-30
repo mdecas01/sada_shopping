@@ -13,7 +13,7 @@
   <% @products.each do |product| %>
       <article class="product">
         <header>
-          <h2><%= link_to product.name, product %></h2>
+          <h2><%= link_to product.name, product_path(product) %></h2>
         </header>
         <%= place_image(product) %>
         <table>
