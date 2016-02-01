@@ -11,34 +11,38 @@
   <header>
     <h1><%= @product.name %></h1>
   </header>
-  <%= place_image(@product) %> 
-  <h2>Description</h2>
+  
+    <%= place_image(@product) %>
+    
+  
+    <h2>Description</h2>
+    <p>
+      <%= @product.description %>
+    </p>
+    <h3>Price</h3>
+    <p>
+      <%= format_price(@product) %>
+      <% if @user_wishlist %>
+          <%= button_to 'Remove from wishlist', product_wishlist_path(@product, @user_wishlist.id), method: :delete, class: 'button' %>
+      <% else %>
+          <%= button_to 'Add to wishlist', product_wishlists_path(@product), class: 'button' %>
+      <% end %>
+      <%= display_add_button(@product) %> 
+      <%= link_to 'Return', products_path, id: "retbtn", class: 'button' %>
+    </p> 
+      <p>
+        <%= link_to pluralize(@product.reviews.size, 'Review'), product_reviews_url(@product), class: 'button' %>
+        <%= link_to 'Write review', new_product_review_path(@product), class: 'button' %>   
+      </p>  
+      <% if admin_user? %>
+      <div id="prod_links">
+        <%= link_to "Edit product", edit_product_path(@product) %> |
+        <%= link_to 'Delete product', product_path(@product), method: :delete, data: { confirm: 'Are you sure you want to delete this product?' } %> |
+        <%= link_to 'Cancel', products_path %>
+      </div>
+      <% end %>      
   <p>
-    <%= @product.description %>
-  </p>
-  <h3>Price</h3>
-  <p>
-    <%= format_price(@product) %>
-  </p>
-  <p>
-    <%= link_to pluralize(@product.reviews.size, 'Review'), product_reviews_url(@product), class: 'button' %>
-    <%= link_to 'Write review', new_product_review_path(@product), class: 'button' %>
-    <% if @user_wishlist %>
-      <%= button_to 'Remove from wishlist', product_wishlist_path(@product, @user_wishlist.id), method: :delete, class: 'button' %>
-    <% else %>
-      <%= button_to 'Add to wishlist', product_wishlists_path(@product), class: 'button' %>
-    <% end %>   
-  </p>  
-<% if admin_user? %>
-  <div id="prod_links">
-    <%= link_to "Edit product", edit_product_path(@product) %> |
-    <%= link_to 'Delete product', product_path(@product), method: :delete, data: { confirm: 'Are you sure you want to delete this product?' } %> |
-    <%= link_to 'Cancel', products_path %>
-  </div>
-<% end %>  
-  <p>
-    <div id="btn"><%= display_add_button(@product) %></div> 
-    <div id="retbtn"><%= link_to 'Return', products_path, class: 'button' %></div>
+    
   </p>
   <% if admin_user? %>
     <h2><%= pluralize(@customers.size, 'customer') %> added this product to their wishlist.</h2>

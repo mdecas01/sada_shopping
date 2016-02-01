@@ -18,13 +18,10 @@ div#main {
         padding: 0 0 20px 0;
       }
 
-      .product {
-          position: relative;
-          margin-left: auto;
-          margin-right: auto;
-          padding-bottom: 20px;
-          
-      } 
+      img {
+        float: left;
+        margin: 30px 40px 20px 0;
+      }
     }
   }
 }  
@@ -243,3 +240,4 @@ div#cart {
 .boxfield {
   width: 600px;
 }
+

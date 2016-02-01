@@ -1,5 +1,7 @@
 class WishlistsController < ApplicationController
 
+  before_action :request_signin_first, only:[:create]
+
 	def index
 	  if params[:search]
       	@users = User.search(params[:search])
