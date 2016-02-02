@@ -20,9 +20,9 @@
     <%= link_to 'Delete category', category_path(categoryl3), method: :delete, data: { confirm: 'Are you sure you want to delete this category and the related categories?' } %><p>
 <% end %> 
 <hr>
-<h2>List of allowed category association</h2>
-<p>Every product category association must respect a predifined order of categories.
-    This means that when adding a new product to the catalogue the sequence of category levels must match one of the list bellow</p>
+<h2>List of allowed category relations</h2>
+<p>All categories at level 2 and 3 must have a parent category associated to them. The list bellow shows the set of categories that can be assigned to a product. So whenever a product is created the sequence of categories must be equal to one of the sequence bellow.</p>
+<p><strong>Category level 1  >  Category level 2  >  Category level 3</strong></p>
 <% @category_level3.each do |categoryl3| %>
-  <p> <%= find_first_parent(categoryl3)%> > <%= find_second_parent(categoryl3) %> > <%= categoryl3.name %></p>
+  <p> <%= find_first_parent(find_second_parent(categoryl3))%>   >   <%= find_second_parent(categoryl3) %>   >   <%= categoryl3.name %></p>
 <% end %> 
