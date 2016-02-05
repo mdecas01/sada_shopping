@@ -23,22 +23,37 @@
         <%= f.label :image_url %>
         <%= f.text_field :image_url %>
       </li>
-      <li>
-         <%= f.label :category_1 %>
-         <%= collection_select(:category, :category1_id, Category.where(level: 1), :id, :name, selected: @product.categories.first.name ) %>
-      </li> 
-      <li>
-         <%= f.label :category_2 %>
-         <%= collection_select(:category, :category2_id, Category.where(level: 2), :id, :name, selected: @product.categories.second.name) %>
-      </li>
-      <li>
-         <%= f.label :category_3 %>
-         <%= collection_select(:category, :category3_id, Category.where(level: 3), :id, :name, selected: @product.categories.third.name) %>
-      </li> 
+      <% if !@product.categories.empty? %> 
+        <li>
+           <%= f.label :category_1 %>
+           <%= collection_select(:category, :category1_id, Category.where(level: 1), :id, :name, selected: @product.categories.first.name ) %>
+        </li> 
+        <li>
+           <%= f.label :category_2 %>
+           <%= collection_select(:category, :category2_id, Category.where(level: 2), :id, :name, selected: @product.categories.second.name) %>
+        </li>
+        <li>
+           <%= f.label :category_3 %>
+           <%= collection_select(:category, :category3_id, Category.where(level: 3), :id, :name, selected: @product.categories.third.name) %>
+        </li>
+      <% else %> 
+        <li>
+           <%= f.label :category_1 %>
+           <%= collection_select(:category, :category1_id, Category.where(level: 1), :id, :name )%>
+        </li> 
+        <li>
+           <%= f.label :category_2 %>
+           <%= collection_select(:category, :category2_id, Category.where(level: 2), :id, :name )%>
+        </li>
+        <li>
+           <%= f.label :category_3 %>
+           <%= collection_select(:category, :category3_id, Category.where(level: 3), :id, :name )%>
+        </li>
+      <% end %>    
     </ol>
     <p>
-      <%= f.submit %>
-      <%= link_to "Cancel", products_path, class: 'button' %>
-    </p>
-  </fieldset>
+        <%= f.submit %>
+        <%= link_to "Cancel", products_path, class: 'button' %>
+      </p>
+ </fieldset>
 <% end %>
