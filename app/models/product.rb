@@ -31,14 +31,14 @@ class Product < ActiveRecord::Base
 
   private
 
-  #def check_product_lines
-   # if product_lines.empty?
-    #  true
-   # else
-     # errors.add(:base, 'A shopping cart has this product')
-     # false
-   # end
-  #end  
+  def check_product_lines
+    if product_items.empty?
+      true
+    else
+      errors.add(:base, 'A shopping cart has this product')
+      false
+    end
+  end  
 
  def self.search(search)
    if search

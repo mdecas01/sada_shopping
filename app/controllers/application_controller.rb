@@ -49,6 +49,24 @@ class ApplicationController < ActionController::Base
     unless admin_user?
       redirect_to products_url, alert: "You are not authorized to perform this action!"
     end  
-  end  
+  end 
+
+      #checks if the relation of the child and parent categories is correct
+    def check_categories_relation(category_ids) 
+      #all the three category levels must be present
+      if category_ids.values[0].to_i == 0 || category_ids.values[1].to_i == 0 || category_ids.values[2].to_i == 0
+        false
+      else
+        cat = Category.find(category_ids.values[1].to_i)
+        cat2 = Category.find(category_ids.values[2].to_i)
+        
+        cat.parent == category_ids.values[0].to_i && cat2.parent == category_ids.values[1].to_i
+      end    
+    end  
+
+    #sets the products attributes according to the passed parameters
+    def set_product
+      @product = Product.find(params[:id])
+    end 
 
 end

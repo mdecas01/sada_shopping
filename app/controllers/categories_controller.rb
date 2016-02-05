@@ -62,5 +62,5 @@ class CategoriesController < ApplicationController
     child_2.delete unless child_2.nil?
     child_1.delete unless child_1.nil?
     @category.delete
-   end 
+  end
 end

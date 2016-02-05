@@ -11,7 +11,11 @@ class ProductsController < ApplicationController
   before_action :allow_admin_user, except: [:index, :show]
 
 	def index
-    @products = Product.search(params[:search]) 
+    #if params[:category]
+     # @products = find_product_by_category(params[:category])
+   # else  
+      @products = Product.search(params[:search]) 
+   # end    
 	end	
 
 	def show
@@ -69,35 +73,17 @@ class ProductsController < ApplicationController
 
     def destroy
       @product = Product.find(params[:id])
-      @product.delete
+      @product.destroy
       flash[:alert] = "Product successfully deleted!"
       redirect_to products_url
     end  
 
     private
     
-    #sets the products attributes according to the passed parameters
-    def set_product
-      @product = Product.find(params[:id])
-    end	
-    
     #set attributes that can be assigned
     def product_attributes
       params.require(:product).permit(:id, :name, :description, :price, :quantity, :image_url, :category )
-    end
-    
-    #checks if the relation of the child and parent categories is correct
-    def check_categories_relation(category_ids) 
-      #all the three category levels must be present
-      if category_ids.values[0].to_i == 0 || category_ids.values[1].to_i == 0 || category_ids.values[2].to_i == 0
-        false
-      else
-        cat = Category.find(category_ids.values[1].to_i)
-        cat2 = Category.find(category_ids.values[2].to_i)
-        
-        cat.parent == category_ids.values[0].to_i && cat2.parent == category_ids.values[1].to_i
-      end    
-    end  
+    end 
     
   def find_category_name(category_id)
     if category_id == 0
@@ -108,4 +94,9 @@ class ProductsController < ApplicationController
   end 
 
   helper_method :find_category_name 
+
+  #def find_product_by_category(params)
+  #  if params == "category1"
+  #    Product.where()
+#  end  
 end

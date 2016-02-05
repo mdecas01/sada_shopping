@@ -3,9 +3,9 @@
  
 <article class="product">
   <% if !@product.categories.empty? %>
-    <p><%= link_to @product.categories.first.name %>  >  
-       <%= link_to @product.categories.second.name %>  >  
-       <%= link_to @product.categories.third.name %>  >  
+    <p><%= link_to @product.categories.first.name, products_path(:category => { :category1 => @product.categories.first.name }) %>  >  
+       <%= link_to @product.categories.second.name, products_path(:category => { :category2 => @product.categories.first.name }) %>  >  
+       <%= link_to @product.categories.third.name, products_path(:category => { :category3 => @product.categories.first.name }) %>  >  
        <%= @product.name %>
   <% end %>     
   <header>
