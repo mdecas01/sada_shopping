@@ -11,11 +11,17 @@ class ProductsController < ApplicationController
   before_action :allow_admin_user, except: [:index, :show]
 
 	def index
-    #if params[:category]
+    if params[:category]
+      @category = Category.find_by(name: params[:category].values[0])
+      cat = Categorization.where(category_id: @category.id)
+      @products = Array.new
+      cat.each do |c|
+        @products << Product.find(c.product_id)
+      end  
      # @products = find_product_by_category(params[:category])
-   # else  
+    else  
       @products = Product.search(params[:search]) 
-   # end    
+    end    
 	end	
 
 	def show
