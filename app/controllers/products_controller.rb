@@ -12,13 +12,14 @@ class ProductsController < ApplicationController
 
 	def index
     if params[:category]
-      @category = Category.find_by(name: params[:category].values[0])
+
+     #@products = find_product_by_category(params[:category])
+     @category = Category.find_by(name: params[:category].values[0])
       cat = Categorization.where(category_id: @category.id)
       @products = Array.new
       cat.each do |c|
         @products << Product.find(c.product_id)
-      end  
-     # @products = find_product_by_category(params[:category])
+      end
     else  
       @products = Product.search(params[:search]) 
     end    
@@ -26,21 +27,27 @@ class ProductsController < ApplicationController
 
 	def show
     @customers = @product.customers
-
     if logged_user
       @user_wishlist = logged_user.wishlists.find_by(product_id: @product.id)
     end  
   end	
 
   def edit  
+  
   end	
 
   def update
+    
+    category_ids = Hash.new
+    category_ids["category1_id"] = Category.find_by(name: params[:category1_id]).id
+    category_ids["category2_id"] = Category.find_by(name: params[:category2_id]).id
+    category_ids["category3_id"] = Category.find_by(name: params[:category3_id]).id
+
     if @product.update(product_attributes)  ############
-      if check_categories_relation(params[:category])
+      if check_categories_relation(category_ids)
           @product.categories.delete_all
-            params[:category].each do |cat| 
-              @product.categories << Category.find(cat[1]) 
+            category_ids.each do |cat| 
+              @product.categories << Category.find(cat[1])            
             end 
           flash[:notice] = "Product seccessfully updated!"
           redirect_to @product
@@ -102,7 +109,12 @@ class ProductsController < ApplicationController
   helper_method :find_category_name 
 
   #def find_product_by_category(params)
-  #  if params == "category1"
-  #    Product.where()
+#      @category = Category.find_by(name: params.values[0])
+#      cat = Categorization.where(category_id: @category.id)
+#      @products = Array.new
+#      cat.each do |c|
+#        @products << Product.find(c.product_id)
+#     end  
 #  end  
+
 end

@@ -33,8 +33,4 @@ class ReviewsController < ApplicationController
   def review_params
       params.require(:review).permit(:stars, :comment)
   end
-
-  def find_product
-    @product = Product.find(params[:product_id])
-  end	
 end

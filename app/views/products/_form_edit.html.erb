@@ -23,33 +23,33 @@
         <%= f.label :image_url %>
         <%= f.text_field :image_url %>
       </li>
-      <% if !@product.categories.empty? %> 
+      <% if @product.categories.empty? %> 
         <li>
            <%= f.label :category_1 %>
-           <%= collection_select(:category, :category1_id, Category.where(level: 1), :id, :name, selected: @product.categories.first.name ) %>
+           <%= select_tag(:category1_id, options_for_select(Category.where(level: 1)))%>
         </li> 
         <li>
            <%= f.label :category_2 %>
-           <%= collection_select(:category, :category2_id, Category.where(level: 2), :id, :name, selected: @product.categories.second.name) %>
+           <%= select_tag(:category2_id, options_for_select(Category.where(level: 2)))%>
         </li>
         <li>
            <%= f.label :category_3 %>
-           <%= collection_select(:category, :category3_id, Category.where(level: 3), :id, :name, selected: @product.categories.third.name) %>
+           <%= select_tag(:category3_id, options_for_select(Category.where(level: 3)))%>
         </li>
-      <% else %> 
+      <% else %>
         <li>
            <%= f.label :category_1 %>
-           <%= collection_select(:category, :category1_id, Category.where(level: 1), :id, :name )%>
+           <%= select_tag(:category1_id, options_for_select(Category.where(level: 1), @product.categories.first )) %>
         </li> 
         <li>
            <%= f.label :category_2 %>
-           <%= collection_select(:category, :category2_id, Category.where(level: 2), :id, :name )%>
+           <%= select_tag(:category2_id, options_for_select(Category.where(level: 2), @product.categories.second )) %>
         </li>
         <li>
            <%= f.label :category_3 %>
-           <%= collection_select(:category, :category3_id, Category.where(level: 3), :id, :name )%>
+           <%= select_tag(:category3_id, options_for_select(Category.where(level: 3), @product.categories.third )) %>
         </li>
-      <% end %>    
+      <% end %>      
     </ol>
     <p>
         <%= f.submit %>

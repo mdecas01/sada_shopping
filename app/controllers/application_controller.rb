@@ -69,4 +69,8 @@ class ApplicationController < ActionController::Base
       @product = Product.find(params[:id])
     end 
 
+    def find_product
+      @product = Product.find(params[:product_id])
+    end 
+
 end
