@@ -20,15 +20,14 @@
       <%= @product.description %>
     </p>
     <h3>Price</h3>
+    <p><%= format_price(@product) %></p>
     <p>
-      <%= format_price(@product) %>
-      <% if @user_wishlist %>
-          <%= button_to 'Remove from wishlist', product_wishlist_path(@product, @user_wishlist.id), method: :delete, class: 'button' %>
+    <% if @user_wishlist %>
+        <%= button_to 'Remove from wishlist', product_wishlist_path(@product, @user_wishlist.id), method: :delete, class: 'button'%>
       <% else %>
           <%= button_to 'Add to wishlist', product_wishlists_path(@product), class: 'button' %>
       <% end %>
       <%= display_add_button(@product) %> 
-      <%= link_to 'Return', products_path, id: "retbtn", class: 'button' %>
     </p> 
       <p>
         <%= link_to pluralize(@product.reviews.size, 'Review'), product_reviews_url(@product), class: 'button' %>
@@ -50,4 +49,5 @@
       <li><%= link_to customer.name, user_path(customer) %></li>
     <% end %>
   <% end %>  
+  <%= link_to 'Return', products_path,  class: 'button' %>
 </article>
