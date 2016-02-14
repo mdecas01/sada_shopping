@@ -8,6 +8,7 @@ div#main {
   div#container {
     width: 100%;
     padding: 10px 0;
+
     section#content {
       
       width: 700px;
@@ -21,6 +22,14 @@ div#main {
       img {
         float: left;
         margin: 30px 40px 20px 0;
+
+      }
+      #right {
+        display: inline-block;
+        width: 400px;
+      }
+      #left {
+        width: 100px;
       }
     }
   }

@@ -1,26 +1,23 @@
 
 <%= render 'layouts/flash' %>
- 
-<article class="product">
-  <% if !@product.categories.empty? %>
+<% if !@product.categories.empty? %>
     <p><%= link_to @product.categories.first.name, products_path(:category => { :category1 => @product.categories.first.name }) %>  >  
        <%= link_to @product.categories.second.name, products_path(:category => { :category2 => @product.categories.first.name }) %>  >  
        <%= link_to @product.categories.third.name, products_path(:category => { :category3 => @product.categories.first.name }) %>  >  
        <%= @product.name %>
-  <% end %>     
-  <header>
-    <h1><%= @product.name %></h1>
-  </header>
-  
-    <%= place_image(@product) %>
-    
-  
-    <h2>Description</h2>
+  <% end %>
+<section id="left">
+  <%= place_image(@product) %>
+</section>  
+<section id="right">
+<article class="product">      
+    <h3><%= @product.name %></h3>
     <p>
-      <%= @product.description %>
+      <%= simple_format(word_wrap(@product.description, line_width: 30)) %>
     </p>
     <h3>Price</h3>
     <p><%= format_price(@product) %></p>
+    <h3>Average review</h3>
     <p>
     <% if @user_wishlist %>
         <%= button_to 'Remove from wishlist', product_wishlist_path(@product, @user_wishlist.id), method: :delete, class: 'button'%>
@@ -39,10 +36,7 @@
         <%= link_to 'Delete product', product_path(@product), method: :delete, data: { confirm: 'Are you sure you want to delete this product?' } %> |
         <%= link_to 'Cancel', products_path %>
       </div>
-      <% end %>      
-  <p>
-    
-  </p>
+      <% end %>     
   <% if admin_user? %>
     <h2><%= pluralize(@customers.size, 'customer') %> added this product to their wishlist.</h2>
     <% @customers.each do |customer| %>
@@ -51,3 +45,4 @@
   <% end %>  
   <%= link_to 'Return', products_path,  class: 'button' %>
 </article>
+</section>
