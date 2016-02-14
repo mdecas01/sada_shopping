@@ -224,7 +224,7 @@ section#error_messages {
 div#cart {
   float: right;
   position: relative;
-  background: $green-color;
+  border-left: solid 2px $green-color;
   top: 30px;
   right: 5px;
   bottom: 0;
@@ -247,6 +247,6 @@ div#cart {
 }
 
 .boxfield {
-  width: 600px;
+  width: 500px;
 }
 

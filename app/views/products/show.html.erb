@@ -23,8 +23,8 @@
         <%= button_to 'Remove from wishlist', product_wishlist_path(@product, @user_wishlist.id), method: :delete, class: 'button'%>
       <% else %>
           <%= button_to 'Add to wishlist', product_wishlists_path(@product), class: 'button' %>
-      <% end %>
-      <%= display_add_button(@product) %> 
+    <% end %>
+    <div id="addbtnfld"><%= display_add_button(@product) %></div>
     </p> 
       <p>
         <%= link_to pluralize(@product.reviews.size, 'Review'), product_reviews_url(@product), class: 'button' %>
