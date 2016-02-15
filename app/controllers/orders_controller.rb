@@ -23,16 +23,16 @@ class OrdersController < ApplicationController
       @order.user = logged_user
       @order.add_product(@cart)
       #decreases the quantity in the catalogue according to the order quantity
-      change_quantity_in_catalogue(@order)  ##
-      if @order.save
-      	Cart.destroy(session[:id])
-      	session[:id] = nil
-        OrderMailer.received(@order).deliver
-        flash[:notice] = "Thanks for shopping with us!"
-        redirect_to products_url
-      else
-        render :new  
-      end	
+        change_quantity_in_catalogue(@order)  ##
+        if @order.save
+      	  Cart.destroy(session[:id])
+      	  session[:id] = nil
+          OrderMailer.received(@order).deliver
+          flash[:notice] = "Thanks for shopping with us!"
+          redirect_to products_url
+        else
+          render :new  
+        end	
 	end	
 
   def edit
@@ -69,8 +69,12 @@ class OrdersController < ApplicationController
       product = Product.find(product_item.product.id)
       product_item.quantity.to_i.times do 
         product.quantity -= 1
-        product.save
+        product.save 
       end
+      #sends email to admin if the product quantity is less than 5
+        if product.quantity < 5
+          ProductMailer.quantity_low(product).deliver
+        end 
     end  
   end  
 end

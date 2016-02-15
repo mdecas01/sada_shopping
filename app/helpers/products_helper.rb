@@ -8,9 +8,9 @@ module ProductsHelper
   
   def product_availability(product)
     if product.available?
-      product.quantity
+      "<div id='instock'>IN STOCK</div>"
     else
-      "Not currently available"
+      "<div id='outstock'>'OUT OF STOCK'</div>"
     end    
   end  
 
