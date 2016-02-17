@@ -1,6 +1,10 @@
 
 <%= render 'layouts/flash' %>
-<h2>User's cart</h2>
+<% if logged_user %>
+  <h2><%= logged_user.name%>'s cart</h2>
+<% else %>
+  <h2>Shopping cart</h2>
+<% end %>  
 <p>You have <%= pluralize(check_product_quantities(@cart), 'product')  %> in your shopping cart</p>
 <table>  
 <%= render 'form' %> 
