@@ -4,9 +4,11 @@ describe "Viewing the product's page" do
 
   it "shows the product details" do
 
-    product = Product.create(product_details)
+   product = Product.create(product_details)
 
-   visit product_url(product)
+   visit products_url
+
+   click_link(product.name)
 
     expect(page).to have_text(product.name)
     expect(page).to have_text(product.description)
@@ -14,4 +16,19 @@ describe "Viewing the product's page" do
     expect(page).to have_selector("img[src$='#{product.image_url}']")
   end	
 
+  it "shows the list of users who added product to wishlist" do
+    admin = User.create!( name: "User2",
+                            email: "user2@example.com",
+                            password: "password2",
+                            password_confirmation: "password2",
+                            admin: true)
+
+    product = Product.create(product_details)
+    sign_in_user(admin)
+    visit product_path(product)
+
+    expect(page).to have_text("added this product to their wishlist") 
+  end	
+  
+  
 end

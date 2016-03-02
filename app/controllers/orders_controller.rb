@@ -50,12 +50,8 @@ class OrdersController < ApplicationController
 
   def destroy
     @order = Order.find(params[:id])
-    if @order.order_dispatched?
-      @order.destroy
-      redirect_to orders_path
-    else
-      redirect_to orders_path, notice: "The product has not been dispatched yet!"
-    end    
+    @order.destroy
+    redirect_to orders_path, alert: "Order has been deleted"   
   end  
 
 	private
@@ -76,5 +72,9 @@ class OrdersController < ApplicationController
           ProductMailer.quantity_low(product).deliver
         end 
     end  
+  end 
+
+  def change_quantity_in_catalogue(order)    ############################
+    order.product_items.each 
   end  
 end

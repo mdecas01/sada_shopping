@@ -1,22 +1,35 @@
 require 'spec_helper'
 
 describe "Viewing a list of users"  do
-  it "shows a list of users" do
+
+  it "shows the link to the users only if the user is an admin" do
     user1 = User.create!(name: "user1",
-    	                email: "user1@example.com",
-    	                password: "bigsecret",
-    	                password_confirmation: "bigsecret")
+                      email: "user1@example.com",
+                      password: "bigsecret",
+                      password_confirmation: "bigsecret")
+
+    sign_in_user(user1)
+
+    expect(page).not_to have_link("Users")
+  end 
+
+  it "shows the list of users" do
+    user1 = User.create!(name: "user1",
+                      email: "user1@example.com",
+                      password: "bigsecret",
+                      password_confirmation: "bigsecret")
 
     user2 = User.create!(name: "user2",
-    	                email: "user2@example.com",
-    	                password: "hugesecret",
-    	                password_confirmation: "hugesecret")
+                      email: "user2@example.com",
+                      password: "bigsecret2",
+                      password_confirmation: "bigsecret2",
+                      admin: true)
 
-  sign_in_user(user1)
+    sign_in_user(user2)
 
-  visit users_url
+    click_link "Users"
 
-  expect(page).to have_text(user1.name)
-  expect(page).to have_text(user2.name)
-  end	
+    expect(page).to have_link("user1")
+    expect(page).to have_link("user2")
+  end 
 end
