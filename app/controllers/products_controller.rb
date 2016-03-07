@@ -107,6 +107,7 @@ class ProductsController < ApplicationController
   end 
 
   helper_method :find_category_name 
+   
 
   #def find_product_by_category(params)
 #      @category = Category.find_by(name: params.values[0])

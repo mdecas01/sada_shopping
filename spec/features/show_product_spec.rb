@@ -24,11 +24,13 @@ describe "Viewing the product's page" do
                             admin: true)
 
     product = Product.create(product_details)
+    user = User.create!(user_details)
+    wishlist = Wishlist.create!(user_id: user.id, product_id: product.id)
     sign_in_user(admin)
     visit product_path(product)
 
-    expect(page).to have_text("added this product to their wishlist") 
+    expect(page).to have_text("1 customer added this product to their wishlist") 
   end	
   
-  
+
 end

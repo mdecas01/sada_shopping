@@ -3,7 +3,16 @@ def product_details(overrides = {})
    name: "Folding chair",
    description: "Resistent and confortable",
    price: 20.99,
-   quantity: 1
+   quantity: 3
+  }.merge(overrides)
+end
+
+def product_details2(overrides = {})
+  {
+   name: "Folding chair2",
+   description: "More resistent and more confortable",
+   price: 30.99,
+   quantity: 3
   }.merge(overrides)
 end
 
