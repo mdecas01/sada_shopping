@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
 
-  before_action :request_signin_first
 
   def index
     @category_level1 = Category.where(level: 1)
