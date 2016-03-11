@@ -1,12 +1,12 @@
 class CategoriesController < ApplicationController
 
   before_action :request_signin_first
-  before_action :allow_admin_user
 
   def index
     @category_level1 = Category.where(level: 1)
     @category_level2 = Category.where(level: 2)
     @category_level3 = Category.where(level: 3)
+    @categories = Category.all
   end	
 
   def new

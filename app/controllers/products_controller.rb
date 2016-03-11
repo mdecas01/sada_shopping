@@ -12,9 +12,16 @@ class ProductsController < ApplicationController
 
 	def index
     if params[:category]
-
-     #@products = find_product_by_category(params[:category])
+     #selects a category
      @category = Category.find_by(name: params[:category].values[0])
+      #gets the categorizations that have the category above
+      cat = Categorization.where(category_id: @category.id)
+      @products = Array.new
+      cat.each do |c|
+        @products << Product.find(c.product_id)
+      end
+    elsif params[:chosen_category]
+      @category = Category.find(params[:chosen_category])
       cat = Categorization.where(category_id: @category.id)
       @products = Array.new
       cat.each do |c|
