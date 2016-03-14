@@ -1,0 +1,4 @@
+<h1>LIST OF COUPONS</h1>
+<% @coupons.each do |c| %>
+  <li><%= c.token %>, to user: <%= c.name %>, expires at: <%= c.expire %></li>
+<% end %>	

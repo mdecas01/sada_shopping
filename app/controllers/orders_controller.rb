@@ -17,11 +17,23 @@ class OrdersController < ApplicationController
 	end	
 
 	def create
+    
       @order = Order.new(order_params)
       #sets the default of dispatched to no
       @order.dispatched = "NO"
       @order.user = logged_user
       @order.add_product(@cart)
+      @order.total = @cart.total_price
+      unless params[:order].values[2].nil? || params[:order].values[2].empty?
+        #gets the coupon entered in the form
+        @coupon = Coupon.find_by(token: params[:order].values[2])
+        if @coupon.redeemed? == true
+          alert = "Coupon invelid!"
+        else  
+          @order.discount_total(@coupon.discount)
+          @coupon.redeem 
+        end  
+      end  
       #decreases the quantity in the catalogue according to the order quantity
         change_quantity_in_catalogue(@order)  ##
         if @order.save

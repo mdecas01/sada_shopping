@@ -1,0 +1,22 @@
+<%= form_for(@coupon) do |f| %>
+  <%= render "errors/error_messages", object: @coupon %>
+  <fieldset>
+    <ol>
+      <li>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </li> 
+      <li>
+        <%= f.label :discount %>
+        <%= f.number_field :discount %>
+      </li> 
+      <li>
+        <%= f.label :days_to_expire %>
+        <%= f.number_field :expire, :step => "any" %>
+      </li>
+    </ol>
+    <p>
+      <%= f.submit %>
+    </p>
+  </fieldset>
+<% end %>

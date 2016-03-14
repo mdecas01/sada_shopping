@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :coupons
+
   resources :categories
 
   resources :wishlists

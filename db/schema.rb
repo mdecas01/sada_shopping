@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160124223136) do
+ActiveRecord::Schema.define(version: 20160314131553) do
 
   create_table "carts", force: true do |t|
     t.integer  "user_id"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 20160124223136) do
   add_index "categorizations", ["category_id"], name: "index_categorizations_on_category_id"
   add_index "categorizations", ["product_id"], name: "index_categorizations_on_product_id"
 
+  create_table "coupons", force: true do |t|
+    t.string   "token"
+    t.integer  "discount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.date     "expire"
+    t.boolean  "redeemed"
+  end
+
   create_table "orders", force: true do |t|
     t.string   "payment_type"
     t.datetime "created_at"
@@ -46,6 +56,8 @@ ActiveRecord::Schema.define(version: 20160124223136) do
     t.string   "dispatched"
     t.text     "address"
     t.integer  "user_id"
+    t.string   "coupon"
+    t.decimal  "total"
   end
 
   create_table "product_items", force: true do |t|

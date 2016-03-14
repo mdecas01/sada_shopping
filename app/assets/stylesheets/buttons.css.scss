@@ -33,3 +33,21 @@
     }
 }
 
+.wish-button {
+  display: inline-block;
+  border-radius: 5px;
+  color: #fff;
+  background-color: $green-color;
+  padding: 5px 7px;
+  text-decoration: none;
+
+   &:hover {
+        display: inline-block;
+        border-radius: 5px;
+        color: #fff;
+        background-color: #52D017;;
+        padding: 5px 7px;
+        text-decoration: none;
+    }
+}
+
