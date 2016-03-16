@@ -13,7 +13,7 @@ class Coupon < ActiveRecord::Base
     end  
 
     def redeem
-      if self.redeemed? == false
+      if self.redeemed == false
       	self.redeemed = true
       end
     end	

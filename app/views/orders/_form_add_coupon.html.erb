@@ -1,0 +1,8 @@
+<%= render 'layouts/flash' %>
+<%= form_for(@order) do |f| %>
+   <li>
+     <%= f.label :coupon %>
+     <%= f.text_field :coupon %>
+   </li>
+      <%= f.submit %>
+<% end %>

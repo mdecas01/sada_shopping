@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
-	before_action :create_cart, only: [:new, :create, :index]
+	before_action :create_cart
   before_action :request_signin_first, only: [:new, :create, :index]
-  before_action :allow_admin_user, only: [:edit, :update, :destroy]
+  before_action :allow_admin_user, only: [ :destroy]
   
   def index
     if admin_user?
@@ -16,32 +16,25 @@ class OrdersController < ApplicationController
     @order = Order.new
 	end	
 
+  def show
+    @order = Order.find(params[:id])
+  end  
+
 	def create
-    
       @order = Order.new(order_params)
       #sets the default of dispatched to no
       @order.dispatched = "NO"
       @order.user = logged_user
       @order.add_product(@cart)
       @order.total = @cart.total_price
-      unless params[:order].values[2].nil? || params[:order].values[2].empty?
-        #gets the coupon entered in the form
-        @coupon = Coupon.find_by(token: params[:order].values[2])
-        if @coupon.redeemed? == true
-          alert = "Coupon invelid!"
-        else  
-          @order.discount_total(@coupon.discount)
-          @coupon.redeem 
-        end  
-      end  
       #decreases the quantity in the catalogue according to the order quantity
-        change_quantity_in_catalogue(@order)  ##
+      change_quantity_in_catalogue(@order)  ##
         if @order.save
       	  Cart.destroy(session[:id])
       	  session[:id] = nil
           OrderMailer.received(@order).deliver
           flash[:notice] = "Thanks for shopping with us!"
-          redirect_to products_url
+          redirect_to order_path(@order)
         else
           render :new  
         end	
@@ -52,12 +45,28 @@ class OrdersController < ApplicationController
   end  
 
   def update
-    @order = Order.find(params[:id])
-    @order.update(order_params)
-    if @order.send_email?
-      OrderMailer.dispatched(@order).deliver
-    end  
-    redirect_to orders_url
+    if params[:order].keys[0] == "coupon"
+        @order = Order.find(params[:id])
+        #gets the coupon entered in the form
+        @coupon = Coupon.find_by(token: params[:order].values[0])
+        if @coupon.redeemed? == true
+          flash.now[:alert] = "Coupon invelid!"
+          render :edit
+        else  
+          @order.discount_total(@coupon.discount)
+          @order.save
+          @coupon.redeem
+          @coupon.save 
+          redirect_to order_path(@order), notice: "You total was discounted"
+        end 
+    else       
+      @order = Order.find(params[:id])
+      @order.update(order_params)
+      if @order.send_email?
+        OrderMailer.dispatched(@order).deliver
+      end  
+      redirect_to orders_url
+    end
   end
 
   def destroy
@@ -84,9 +93,5 @@ class OrdersController < ApplicationController
           ProductMailer.quantity_low(product).deliver
         end 
     end  
-  end 
-
-  def change_quantity_in_catalogue(order)    ############################
-    order.product_items.each 
   end  
 end

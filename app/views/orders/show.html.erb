@@ -1,0 +1,4 @@
+<h1>Details for you order</h1>
+<h3>Customer name: <%= @order.user.name %>
+<h3>Total: <%= @order.total %> 
+<p>Have a discount coupon? Click <%= link_to 'HERE', edit_order_path(@order) %> </p>

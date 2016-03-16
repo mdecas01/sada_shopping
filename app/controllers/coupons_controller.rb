@@ -13,6 +13,7 @@ class CouponsController < ApplicationController
     def create
       @coupon = Coupon.new(coupons_params)
       @coupon.set_token
+      @coupon.redeemed = false
       @coupon.set_expiring_date(params[:coupon].values[2])
       if @coupon.save
         redirect_to coupons_path

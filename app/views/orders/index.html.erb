@@ -37,6 +37,4 @@
     <% end %>
   <% end %>  
     <%= link_to 'Back', products_path, class: 'button' %>
-    <% if @orders.size > 5 %>
-      <%= will_paginate @orders %>
-    <% end %>  
+    
