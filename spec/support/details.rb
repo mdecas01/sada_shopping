@@ -16,6 +16,13 @@ def product_details2(overrides = {})
   }.merge(overrides)
 end
 
+def coupon_details(overrides = {})
+  {
+   name: "User1",
+   discount: "10",
+   expire: Time.now + 10
+  }.merge(overrides)
+end
 
 
 def user_details(overrides = {})
