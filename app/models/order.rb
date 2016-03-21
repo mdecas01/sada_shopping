@@ -33,6 +33,6 @@ class Order < ActiveRecord::Base
 
   def discount_total(amount)
     #transforms the amount in a decimal number and reduces the total
-    self.total = self.total - (self.total * (amount.to_i * 0.01))
+    self.total = (self.total - (self.total * (amount.to_i * 0.01))).round(2)
   end  
 end

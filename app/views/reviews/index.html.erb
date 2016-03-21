@@ -8,7 +8,7 @@
         Review by: <%= link_to review.user.name, user_url(review.user) %> on <%= review.created_at.to_date %>
       </p>	
       <p>
-        Rating: <%= place_rating(review)%>
+        Rating: <%= place_rating(review.stars)%>
       </p> 
       <p>
         Comment: <%= review.comment %>

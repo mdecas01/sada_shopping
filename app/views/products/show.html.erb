@@ -17,7 +17,7 @@
     </p>
     <h3>Price</h3>
     <p><%= format_price(@product) %></p>
-    <h3>Average review</h3>
+    <p>Average review: <%= place_rating(@product.average_star_reviews) %></p>
     <p>
     <% if admin_user? %>
       <p>Quantity: <%= @product.quantity %></p>

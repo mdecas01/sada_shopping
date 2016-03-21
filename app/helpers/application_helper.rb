@@ -4,8 +4,8 @@ module ApplicationHelper
     number_to_currency(product.price, unit: "£")
   end
 	
-  def place_rating(review)
-    case review.stars
+  def place_rating(stars)
+    case stars
     when 1
       image_tag("one-star.jpg")
     when 2

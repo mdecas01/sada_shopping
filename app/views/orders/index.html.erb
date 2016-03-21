@@ -31,9 +31,11 @@
             </tr>
           </table>
         </article>
-        <%= link_to "Edit order", edit_order_path(order) %> |
-        <%= link_to "Delete order", order_path(order), method: :delete, data: { confirm: 'Are you sure you want to delete the order?' } %>
-        <hr>
+        <% if admin_user? %>
+          <%= link_to "Edit order", edit_order_path(order) %> |
+          <%= link_to "Delete order", order_path(order), method: :delete, data: { confirm: 'Are you sure you want to delete the order?' } %>
+          <hr>
+        <% end %>  
     <% end %>
   <% end %>  
     <%= link_to 'Back', products_path, class: 'button' %>

@@ -50,14 +50,19 @@ class OrdersController < ApplicationController
         #gets the coupon entered in the form
         @coupon = Coupon.find_by(token: params[:order].values[0])
         if @coupon.redeemed? == true
-          flash.now[:alert] = "Coupon invelid!"
+          flash.now[:alert] = "Coupon invalid!"
           render :edit
         else  
-          @order.discount_total(@coupon.discount)
-          @order.save
-          @coupon.redeem
-          @coupon.save 
-          redirect_to order_path(@order), notice: "You total was discounted"
+          if @coupon.name == logged_user.name || @coupon.name == "promo"
+            @order.discount_total(@coupon.discount)
+            @order.save
+            @coupon.redeem
+            @coupon.save 
+            redirect_to order_path(@order), notice: "You total was discounted"
+          else
+            flash.now[:alert] = "Coupon invelid!"
+            render :edit
+          end  
         end 
     else       
       @order = Order.find(params[:id])

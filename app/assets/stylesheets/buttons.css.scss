@@ -5,15 +5,16 @@
   border: 1px $button-color solid;
   border-radius: 5px;
   color: white;
-  background-color: $button-color;
+  background-color: #6534ff;
   padding: 4px 6px;
   text-decoration: none;
   
   margin: 5px;
   
 
-  &.empty {
-
+  &:hover {
+    background-color: #62bcfa;
+    color: #fff;
   }
 }
 
