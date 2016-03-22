@@ -17,7 +17,9 @@ class CouponsController < ApplicationController
       @coupon.set_expiring_date(params[:coupon].values[2])
       if @coupon.save
         redirect_to coupons_path
-      end
+      else
+        render :new
+      end  
     end	
 
     def coupons_params

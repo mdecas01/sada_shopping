@@ -34,6 +34,16 @@ def user_details(overrides = {})
   }.merge(overrides)
 end
 
+def admin_user_details(overrides = {})
+  {
+    name: "User1",
+    email: "user1@example.com",
+    admin: true,
+    password: "password",
+    password_confirmation: "password"
+  }.merge(overrides)
+end
+
 def order_details(overrides = {})
   {
     address: "Bermondsey, London",

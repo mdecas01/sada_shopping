@@ -10,7 +10,7 @@ require 'spec_helper'
     
     it "has an expiring date" do
       coupon = Coupon.create(coupon_details(expire: Time.now + 20))
-      time = Time.now + 20.("%B %d, %Y").to_s
-      expect(coupon.expire).to eq(time)
+     
+      expect(coupon.expire).to eq(Date.strptime((Time.now + 20).to_s, "%B %d, %Y"))
     end	
   end
