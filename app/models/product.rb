@@ -29,12 +29,15 @@ class Product < ActiveRecord::Base
       Time.now < created_at.to_time + (60 * 60 * 24)	
 	end	
 
-   def average_star_reviews
+  def average_star_reviews
    total_stars = 0
    number_of_reviews = 0
    reviews.each do |review|
-     total_stars = total_stars + review.stars
-     number_of_reviews += 1
+     #excludes the admin users from the counting
+     if !review.user.admin
+       total_stars = total_stars + review.stars
+       number_of_reviews += 1
+     end  
    end 
    if number_of_reviews > 0
      total_stars / number_of_reviews 

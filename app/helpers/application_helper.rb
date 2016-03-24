@@ -18,9 +18,11 @@ module ApplicationHelper
     when 4
       #image_tag("four-stars.png", class: "rate_img")
       "<b>4</b> out of <b>5</b>"
-    else
+    when 5
       #image_tag("five-star.png", class: "rate_img")
       "<b>5</b> out of <b>5</b>"
+    else
+      "<b>No reviews</b>"
     end      	  
   end	 
 end
