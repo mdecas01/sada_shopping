@@ -24,9 +24,9 @@ module ProductsHelper
 
   def display_add_button(product)
       if product.available?
-         button_to "Add to cart", product_items_path(product: @product), remote: true, id: "addbtn", class: "button" 
+         button_to "Add to cart", product_items_path(product: @product), remote: true, id: "addbtn", class: "button"
       else
-       "Not currently available"
+       "<div id='not_available'><b>Not currently available</b></div>"
       end 
   end 
 end

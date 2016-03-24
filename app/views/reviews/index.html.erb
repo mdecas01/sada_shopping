@@ -3,17 +3,28 @@
 <h2>The product has <%= pluralize(@reviews.size, 'review') %></h2>
 <ol>
   <% @product.reviews.each do |review| %>
+  <% if !review.user.admin %>
     <li>
       <p>
         Review by: <%= link_to review.user.name, user_url(review.user) %> on <%= review.created_at.to_date %>
       </p>	
       <p>
-        Rating: <%= place_rating(review.stars)%>
-      </p> 
+         Rating: <%= place_rating(review.stars).html_safe %>
+      </p>  
       <p>
         Comment: <%= review.comment %>
       </p>
     </li>
+  <% else %> 
+     <li>
+      <p>
+        Message from: <%= link_to review.user.name, user_url(review.user) %> on <%= review.created_at.to_date %>
+      </p>    
+      <p>
+        Comment: <%= review.comment %>
+      </p>
+    </li>
+  <% end %>  
     <hr>
   <% end %>
 </ol>

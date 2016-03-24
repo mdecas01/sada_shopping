@@ -171,6 +171,18 @@ section#error_messages {
   }
 } 
 
+    section#right {
+      
+      width: 50%;
+      float: right;
+    }
+
+    section#left {
+      
+      width: 50%;
+      float: left;
+    }  
+
 #new_prod {
   color: red;
 }
@@ -238,3 +250,32 @@ div#outstock {
   color: red;
 }
 
+.rate_img {
+   
+ }
+
+ div#av_review {
+   
+ }
+
+div#not_available {
+  color: red;
+}
+
+.button_review {
+  display: inline-block;
+  border: 1px #FFFF00 solid;
+  border-radius: 5px;
+  color: white;
+  background-color: #9dc209;
+  padding: 4px 6px;
+  text-decoration: none;
+  
+  margin: 5px;
+  
+
+  &:hover {
+    background-color: #62bcfa;
+    color: #fff;
+  }
+}

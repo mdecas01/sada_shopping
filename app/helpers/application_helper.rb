@@ -7,15 +7,20 @@ module ApplicationHelper
   def place_rating(stars)
     case stars
     when 1
-      image_tag("one-star.jpg")
+      #image_tag("one-star.jpg", class: "rate_img")
+      "<b>1</b> out of <b>5</b>"
     when 2
-      image_tag("two-stars.png")  	
+      #image_tag("two-stars.png", class: "rate_img") 
+      "<b>2</b> out of <b>5</b>"	
     when 3
-      image_tag("three-stars.png")
+      #image_tag("three-stars.png", class: "rate_img")
+      "<b>3</b> out of <b>5</b>"
     when 4
-      image_tag("four-stars.png")
+      #image_tag("four-stars.png", class: "rate_img")
+      "<b>4</b> out of <b>5</b>"
     else
-      image_tag("five-star.png")
+      #image_tag("five-star.png", class: "rate_img")
+      "<b>5</b> out of <b>5</b>"
     end      	  
   end	 
 end

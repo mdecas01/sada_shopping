@@ -11,28 +11,32 @@
 </section>  
 <section id="right">
 <article class="product">      
-    <h3><%= @product.name %></h3>
-    <p>
-      <%= simple_format(word_wrap(@product.description, line_width: 30)) %>
-    </p>
-    <h3>Price</h3>
-    <p><%= format_price(@product) %></p>
-    <p>Average review: <%= place_rating(@product.average_star_reviews) %></p>
-    <p>
-    <% if admin_user? %>
-      <p>Quantity: <%= @product.quantity %></p>
-    <% else %> 
-       <% if @user_wishlist %>
-         <%= button_to 'Remove from wishlist', product_wishlist_path(@product, @user_wishlist.id), method: :delete, class: 'wish-button'%>
-       <% else %>
-          <%= button_to 'Add to wishlist', product_wishlists_path(@product), class: 'button' %>
-       <% end %>  
-       <div id="addbtnfld"><%= display_add_button(@product) %></div>  
-    <% end %> 
-    </p> 
+    <header>
+      <h2><%= @product.name %></h2>
+    </header>
+    <table> 
+    <tr> 
       <p>
-        <%= link_to pluralize(@product.reviews.size, 'Review'), product_reviews_url(@product), class: 'button' %>
-        <%= link_to 'Write review', new_product_review_path(@product), class: 'button' %>   
+        <%= simple_format(word_wrap(@product.description, line_width: 30)) %>
+      </p>
+    </tr>
+    <tr>  
+      <h3>Price</h3>
+      <p><%= format_price(@product) %></p>
+    </tr> 
+    <% if admin_user? %>
+      <tr>
+        <h3>Quantity: </h3>
+        <p><%= @product.quantity %></p>
+      </tr>  
+    <% else %> 
+        <tr>
+         <p><%= display_add_button(@product).html_safe %></p> 
+        </tr> 
+    <% end %> 
+      <p>
+        <%= link_to pluralize(@product.reviews.size, 'Review'), product_reviews_url(@product), class: 'button_review' %>
+        <%= link_to 'Write review', new_product_review_path(@product), class: 'button_review' %>   
       </p>  
       <% if admin_user? %>
       <div id="prod_links">
@@ -47,6 +51,16 @@
       <li><%= link_to customer.name, user_path(customer) %></li>
     <% end %>
   <% end %>  
+</table>
+<% if @user_wishlist %>
+         <tr>
+           <p><%= button_to 'Remove from wishlist', product_wishlist_path(@product, @user_wishlist.id), method: :delete, class: 'wish-button'%></p>
+         </tr>  
+       <% else %>
+          <tr>
+            <p><%= button_to 'Add to wishlist', product_wishlists_path(@product), class: 'button' %></p>
+          </tr>  
+       <% end %> 
   <%= link_to 'Return', products_path,  class: 'button' %>
 </article>
 </section>

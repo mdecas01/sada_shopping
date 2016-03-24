@@ -32,6 +32,13 @@
              Availability: <%= product_availability(product).html_safe %>
             </p>
           </tr>
+          <tr> 
+          <div id="av_review"> 
+            <p>
+              Average review: <%= place_rating(product.average_star_reviews).html_safe %>
+            </p> 
+          </div>   
+          </tr> 
           <tr>
             <p id="new_prod">
              <%= new_product(product) %>
