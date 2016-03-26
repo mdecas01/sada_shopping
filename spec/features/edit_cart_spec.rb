@@ -3,16 +3,17 @@ require 'spec_helper'
   describe "Editing a cart" do
     
     it "changes the quantity of each product" do
-      product1 = Product.create!(product_details)
+      product = Product.create!(product_details)
+      user = User.create!(user_details)
+      sign_in_user(user)
 
-      cart = Cart.create!
-      cart.add_product_item(product1)
-      
-      visit edit_cart_path(cart)
+      visit product_url(product)
+      click_button "Add to cart"
+      click_link "Edit cart"
 
       select "2", from: "quantity"
       click_button "Update item"
 
-      expect(page).to have_text("2x	Folding Chair")
+      expect(page).to have_text("2x Folding chair")
     end
   end

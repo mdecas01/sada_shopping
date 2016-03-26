@@ -8,22 +8,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= render 'layouts/header' %>
 
-<%= render 'layouts/header' %>
-
-<div id="main">
-  <div id="container">
+  <div id="main">
+    <div id="sidebar">
       <%= render 'layouts/sider_admin' %>
-      <div id="cart">
-        <%= render 'layouts/sider_user' %>  
-      </div>
-    <section id="content"> 
+    </div>    
+    <div id="cart">
+      <%= render 'layouts/sider_user' %>  
+    </div> 
+    <div id="content"> 
       <%= yield %>
-    </section>  
-  </div>  
-</div>
+    </div> 
+  </div>
 
-<%= render 'layouts/footer' %>
-
+  <%= render 'layouts/footer' %>
 </body>  
 </html> 

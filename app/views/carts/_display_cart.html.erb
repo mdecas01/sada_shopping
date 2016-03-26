@@ -1,3 +1,4 @@
+<div id="cart">
 <% if logged_user %>
   <h2><%= logged_user.name %>'s cart</h2>
 <% else %>
@@ -17,3 +18,4 @@
     <td class="tot"><%= number_to_currency(@cart.total_price, unit: "£") %></td>
   </tr>	
   </table>
+  </div>

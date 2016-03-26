@@ -4,20 +4,18 @@ describe "Viewing a list of reviews" do
  
   
   it "shows the reviews for a specific product" do
-    @user = User.create!(user_details(admin: true))
-    sign_in_user(@user)
-
-    @product1 = Product.create!(product_details)
-    @review1 = @product1.reviews.create!(review_details)
-    @review2 = @product1.reviews.create!(review_details(stars: 2, comment: "Could be better!"))
-
-    @product2 = Product.create!(product_details(name: "Folding chair 2"))
-    @review3 = @product2.reviews.create!(review_details(stars: 4, comment: "Better than the previous!"))
+    user = User.create!(user_details)
+    product = Product.create(product_details)
+    sign_in_user(user)
     
-    visit product_reviews_url(@product1)
+    visit product_path(product)
+    click_link 'Write review'
+
+    select "2", from: "review_stars"
+    fill_in "review_comment", with:"Could be better"
+    click_button "Post Review"
         
-    expect(page).to have_text(@review1.comment)
-    expect(page).to have_text(@review2.comment)
-    expect(page).not_to have_text(@review3.comment)
+    expect(page).to have_text("Could be better")
+    expect(page).to have_text("2 out of 5")
   end
 end

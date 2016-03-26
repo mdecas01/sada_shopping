@@ -1,8 +1,7 @@
 <% @cart.product_items.each do |item| %>
   <%= form_for(item) do |f| %>
     <tr>
-      <td><%= item.quantity %>x </td>
-      <td><%= item.product.name %></td>
+      <td><%= item.quantity %>x <%= item.product.name %></td>
       <td><%= format_price(item.product) %></td> 
       <td><%= select_tag 'quantity', options_for_select(1..10, item.quantity) %></td>
       <td>

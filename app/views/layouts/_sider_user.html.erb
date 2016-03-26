@@ -1,12 +1,12 @@
-<div id="user-cart">
+ <div id="user-cart">
   <% if @cart %>
       <% unless @cart.product_items.empty?  %>
         <aside class="p-aside">
           <nav>
             <ul>
-    	      <%= render 'carts/display_cart' %> 
-    	    </ul> 
-    	  </nav>
+            <%= render 'carts/display_cart' %> 
+          </ul> 
+        </nav>
         </aside>
         <div id="cart-buttons">
           <%= link_to 'Empty cart', cart_path(@cart), method: :delete, data: { confirm: 'Are you sure you want to empty the cart?' }, class: "button" %>

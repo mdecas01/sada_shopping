@@ -36,8 +36,8 @@ end
 
 def admin_user_details(overrides = {})
   {
-    name: "User1",
-    email: "user1@example.com",
+    name: "UserAdmin",
+    email: "user_admin@example.com",
     admin: true,
     password: "password",
     password_confirmation: "password"

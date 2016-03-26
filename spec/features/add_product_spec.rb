@@ -13,7 +13,7 @@ describe "Adding a new product" do
   it "saves the product and shows the product's details" do
     visit products_url
 
-    click_link "Add new product"
+    click_link "New product"
 
     expect(current_path).to eq(new_product_path)
 

@@ -3,8 +3,7 @@
   <fieldset>
     <ol>
       <li>
-        <%= f.label :stars %>
-        <%= f.select :stars, Review::STARS, prompt: "Choose one" %>
+        <%= f.select :stars, Review::STARS, {}, selected: 1, class: 'admin_selec_field'%>
       </li> 
       <li>
         <%= f.label :comment %>
