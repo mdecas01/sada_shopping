@@ -8,9 +8,11 @@ class ApplicationController < ActionController::Base
   #creates a cart if no one  exists yet
   def create_cart
     @cart = Cart.find(session[:id])
+    @cart.total_price(@cart.coupon)
   rescue ActiveRecord::RecordNotFound
     @cart = Cart.create
     session[:id] = @cart.id
+    @cart.total_price(@cart.coupon)
   end
   
   #checks if the user is logged and is an admin

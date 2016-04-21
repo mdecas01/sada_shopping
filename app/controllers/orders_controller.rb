@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
-	before_action :create_cart
+  before_action :create_cart
   before_action :request_signin_first, only: [:new, :create, :index]
-  before_action :allow_admin_user, only: [ :destroy]
+  before_action :allow_admin_user, only: [:destroy]
   
   def index
     if admin_user?
@@ -12,33 +12,33 @@ class OrdersController < ApplicationController
     end  
   end 
    
-	def new	
+  def new 
     @order = Order.new
-	end	
+  end 
 
   def show
     @order = Order.find(params[:id])
   end  
 
-	def create
+  def create
       @order = Order.new(order_params)
       #sets the default of dispatched to no
       @order.dispatched = "NO"
       @order.user = logged_user
       @order.add_product(@cart)
-      @order.total = @cart.total_price
+      @order.total = @cart.total
       #decreases the quantity in the catalogue according to the order quantity
       change_quantity_in_catalogue(@order)  ##
         if @order.save
-      	  Cart.destroy(session[:id])
-      	  session[:id] = nil
+          Cart.destroy(session[:id])
+          session[:id] = nil
           OrderMailer.received(@order).deliver
           flash[:notice] = "Thanks for shopping with us!"
           redirect_to order_path(@order)
         else
           render :new  
-        end	
-	end	
+        end 
+  end 
 
   def edit
     @order = Order.find(params[:id]) 
@@ -46,24 +46,7 @@ class OrdersController < ApplicationController
 
   def update
     if params[:order].keys[0] == "coupon"
-        @order = Order.find(params[:id])
-        #gets the coupon entered in the form
-        @coupon = Coupon.find_by(token: params[:order].values[0])
-        if @coupon.redeemed? == true
-          flash.now[:alert] = "Coupon invalid!"
-          render :edit
-        else  
-          if @coupon.name == logged_user.name || @coupon.name == "promo"
-            @order.discount_total(@coupon.discount)
-            @order.save
-            @coupon.redeem
-            @coupon.save 
-            redirect_to order_path(@order), notice: "You total was discounted"
-          else
-            flash.now[:alert] = "Coupon invelid!"
-            render :edit
-          end  
-        end 
+        #EREASE THE IF 
     else       
       @order = Order.find(params[:id])
       @order.update(order_params)
@@ -80,11 +63,11 @@ class OrdersController < ApplicationController
     redirect_to orders_path, alert: "Order has been deleted"   
   end  
 
-	private
+  private
 
-	def order_params
+  def order_params
       params.require(:order).permit(:address, :payment_type, :dispatched)
-	end
+  end
 
   def change_quantity_in_catalogue(order)
     order.product_items.each do |product_item|

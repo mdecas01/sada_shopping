@@ -35,7 +35,12 @@ class Cart < ActiveRecord::Base
     end  
   end  
 
-  def total_price
-    product_items.to_a.sum { |item| item.total_price }
+  def total_price(amount)
+     if amount
+       total = product_items.to_a.sum { |item| item.total_price }
+       self.total = (total - (total * (BigDecimal(amount) * 0.01))).round(2) 
+     else
+      self.total = product_items.to_a.sum { |item| item.total_price }
+     end
   end  
 end

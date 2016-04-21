@@ -15,7 +15,8 @@
   <% end %>     
   <tr class="total_value">
     <td><%= content_tag(:strong, 'Total:') %> </td>
-    <td class="tot"><%= number_to_currency(@cart.total_price, unit: "£") %></td>
+    <td class="tot"><%= number_to_currency(@cart.total_price(@cart.coupon), unit: "£") %></td>
   </tr>	
   </table>
+  <p>Have a discount coupon? Click <%= link_to 'HERE', edit_cart_path(@cart) %> </p>
   </div>

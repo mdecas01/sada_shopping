@@ -1,6 +1,6 @@
 <%= form_for(@order) do |f| %>
   <%= render "errors/error_messages", object: @order %>
-  <h2>Your order total is: <%= number_to_currency(@cart.total_price, unit: "£") %></h2>
+  <h2>Your order total is: <%= number_to_currency(@cart.total_price(@cart.coupon), unit: "£") %></h2>
   <fieldset>
     <ol>
       <li>

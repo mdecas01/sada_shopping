@@ -10,8 +10,13 @@
 <%= render 'form' %> 
 <tr class="total_value">
   <td>Total: </td>
-  <td id="tot"><%= @cart.total_price %></td>
+    <td class="tot"><%= number_to_currency(@cart.total_price(@cart.coupon), unit: "£") %></td>
 </tr>	
 </table>
+<% if @cart.coupon %>
+  <h2>Your coupon was redeemed</h2>
+<% else %>
+  <h2>Add coupon</h2><%= render 'form_add_coupon' %>
+<% end %>  
 <%= button_to 'Empty cart', cart_path(@cart), method: :delete, data: { confirm: 'Are you sure you want to empty the cart?' }, class: "button empty" %>
   
