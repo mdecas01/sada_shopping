@@ -52,3 +52,4 @@ class CartsController < ApplicationController
     redirect_to products_url
   end 
 end
+
