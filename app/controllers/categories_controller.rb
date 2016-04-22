@@ -63,3 +63,4 @@ class CategoriesController < ApplicationController
     @category.delete
   end
 end
+
