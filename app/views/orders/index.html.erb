@@ -1,4 +1,4 @@
-  <%= render 'layouts/flash' %>
+ <%= render 'layouts/flash' %>
   <h1>List of orders</h1>
   <% if @orders.empty? %>
       <h2>There are no orders!</h2> 
@@ -13,6 +13,10 @@
             <% order.product_items.each do |item| %>
               <li><%= item.quantity %>x <%= item.product.name %>: <%= item.total_price %></li>
             <% end %>
+            <tr>
+              <th>Order total:</th>
+              <td><%= order.total %></td>
+            </tr>
             <tr>
               <th>Delivery address:</th>
               <td><%= order.address %></td>
@@ -39,4 +43,3 @@
     <% end %>
   <% end %>  
     <%= link_to 'Back', products_path, class: 'button' %>
-    

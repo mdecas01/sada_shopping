@@ -7,4 +7,5 @@
     <li><%= item.quantity %>x <%= item.product.name %>: <%= item.product.price %></li>
   <% end %>  
 </ul>	
+<h2>The total for the order was: <%= @order.total %></h2>
 <p>The payment type chosen was: <%= @order.payment_type %></p>
