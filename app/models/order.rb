@@ -36,3 +36,4 @@ class Order < ActiveRecord::Base
     self.total = (self.total - (self.total * (amount * 0.01))).round(2)
   end  
 end
+
